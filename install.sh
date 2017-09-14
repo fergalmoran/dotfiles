@@ -43,12 +43,9 @@ if [ ! -f $OMF ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-<<<<<<< HEAD
 #install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-=======
->>>>>>> parent of 02ed9ee... WS-2017.2 <fergalm@localhost Overwrite remote git@github.com:fergalmoran/dotfiles.git to local
 #install git flow completion
 git clone https://github.com/bobthecow/git-flow-completion ~/.oh-my-zsh/custom/plugins/git-flow-completion
 
