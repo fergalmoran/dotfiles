@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd ~/.PyCharm2017.1/
+rm config/eval/*evaluation.key
+rm config/options/options.xml
+cd ~/.java/.userPrefs/jetbrains
+rm -rf pycharm/
