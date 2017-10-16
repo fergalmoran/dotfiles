@@ -89,3 +89,5 @@ source '/home/fergalm/dotfiles/.private.env'
 # If not running interactively, do not do anything
 #[[ $- != *i* ]] && return
 #[[ -z "$TMUX" ]] && exec tmux
+
+export PATH="$HOME/.yarn/bin:$PATH"
