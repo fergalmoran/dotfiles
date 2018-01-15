@@ -2,7 +2,10 @@ function pips() {
     echo $'\n'$1 >> requirements.txt; pip install $1
 }
 
-<<<<<<< HEAD
+kubetoken(){
+    kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^kubernetes-dashboard-token-/{print $1}') | awk '$1=="token:"{print $2}' | pbcopy
+}
+
 function reset_webstorm(){
     cd ~/.WebStorm*
     rm config/eval/WebStorm*evaluation.key
@@ -11,8 +14,6 @@ function reset_webstorm(){
     rm -rf webstorm
 }
 
-=======
->>>>>>> parent of 02ed9ee... WS-2017.2 <fergalm@localhost Overwrite remote git@github.com:fergalmoran/dotfiles.git to local
 cb() {
   local _scs_col="\e[0;32m"; local _wrn_col='\e[1;31m'; local _trn_col='\e[0;33m'
   # Check that xclip is installed.
@@ -46,3 +47,24 @@ cb() {
 
 function gi() { curl -L -s https://www.gitignore.io/api/\$@ ;}
 
+function update-x11-forwarding
+{
+    if [ -z "$STY" -a -z "$TMUX" ]; then
+        echo $DISPLAY > ~/.display.txt
+    else
+        export DISPLAY=`cat ~/.display.txt`
+    fi
+}
+
+# This is run before every command.
+preexec() {
+    # Don't cause a preexec for PROMPT_COMMAND.
+    # Beware!  This fails if PROMPT_COMMAND is a string containing more than one command.
+    [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return 
+
+    update-x11-forwarding
+
+    # Debugging.
+    #echo DISPLAY = $DISPLAY, display.txt = `cat ~/.display.txt`, STY = $STY, TMUX = $TMUX  
+}
+trap 'preexec' DEBUG

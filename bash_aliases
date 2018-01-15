@@ -3,6 +3,8 @@ HOSTNAME=`hostname -s`
 # ignore
 alias ls="ls -alh"
 
+alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
+
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"
 alias djshell="python manage.py shell_plus --use-pythonrc --ipython"
