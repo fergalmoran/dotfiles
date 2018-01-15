@@ -23,6 +23,7 @@ alias tor="docker run -i -t --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11
 alias sqlw="/opt/SqlWorkbench/sqlworkbench.sh &"
 alias se="/opt/StorageExplorer/StorageExplorer > /dev/null 2>&1 &"
 alias dbv="dbeaver > /dev/null 2>&1 &"
+alias sqlops="/opt/sqlops-linux-x64/sqlops > /dev/null 2>&1 &"
 alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 
 alias reloadbashrc="source ~/.bashrc"

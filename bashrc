@@ -7,6 +7,7 @@ case $- in
       *) return;;
 esac
 
+export LC_ALL="en_IE.UTF-8"
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

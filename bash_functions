@@ -47,6 +47,7 @@ cb() {
 
 function gi() { curl -L -s https://www.gitignore.io/api/\$@ ;}
 
+<<<<<<< HEAD
 function update-x11-forwarding
 {
     if [ -z "$STY" -a -z "$TMUX" ]; then
@@ -68,3 +69,10 @@ preexec() {
     #echo DISPLAY = $DISPLAY, display.txt = `cat ~/.display.txt`, STY = $STY, TMUX = $TMUX  
 }
 trap 'preexec' DEBUG
+=======
+function update_vscode(){
+    wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb
+    sudo dpkg -i /tmp/code_latest_amd64.deb
+}
+
+>>>>>>> fe881ecfdc1569521b98510c6c0cbfa29c58800b

@@ -82,10 +82,11 @@ source ~/.bash_aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH=$PATH:/home/fergalm/dotfiles/bin:/opt/android/sdk/platform-tools/
-
-source '/home/fergalm/lib/azure-cli/az.completion'
-source '/home/fergalm/dotfiles/.private.env'
-
+if [ -f /home/fergalm/dotfiles/.private.env ]; then
+    source '/home/fergalm/dotfiles/.private.env'
+fi
 # If not running interactively, do not do anything
 #[[ $- != *i* ]] && return
 #[[ -z "$TMUX" ]] && exec tmux
+
+export PATH="$HOME/.yarn/bin:$PATH"

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd ~/.WebStorm2017.2/
+rm config/eval/*evaluation.key
+rm config/options/options.xml
+cd ~/.java/.userPrefs/jetbrains
+rm -rf webstorm/
