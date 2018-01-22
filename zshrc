@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/dotfiles/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -51,6 +51,10 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv)
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=true
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -86,7 +90,7 @@ source ~/.bash_aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH=$PATH:/home/fergalm/dotfiles/bin:/opt/android/sdk/platform-tools/
+export PATH=$PATH:/home/fergalm/dotfiles/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin
 if [ -f /home/fergalm/dotfiles/.private.env ]; then
     source '/home/fergalm/dotfiles/.private.env'
 fi
