@@ -56,15 +56,7 @@ sudo locale-gen "en_IE.UTF-8"
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt update
 sudo apt-get install -y exuberant-ctags build-essential cmake python-dev python3-dev libssl-dev vim-youcompleteme autojump nodejs htop ncdu python-pip python3-pip byobu zsh vim-gtk python-setuptools neovim tree git-extras cowsay fortune winbind libpq-dev xclip whois
-sudo pip install --upgrade pip
-sudo pip install --upgrade neovim
-sudo pip3 install --upgrade neovim
-ln -s /home/fergalm/.vim /home/fergalm/.config/nvim
-ln -s /home/fergalm/.vimrc /home/fergalm/.config/nvim/init.vim
 
-sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 
 sudo pip install livereload speedtest-cli virtualenv virtualenvwrapper
 sudo npm install -g goops
