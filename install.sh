@@ -71,18 +71,6 @@ sudo npm install -g goops
 
 chsh -s /bin/zsh
 
-git clone git@github.com:fergalmoran/vimfiles.git /home/fergalm/.vim
-ln -s /home/fergalm/.vim/.vimrc /home/fergalm/.vimrc
-
-cd /home/fergalm/.vim
-git submodule init
-git submodule update
-vim +BundleInstall +qall
-
-git config --global user.email "fergal.moran@gmail.com"
-git config --global user.name "Fergal Moran"
-
-
 mkdir -p /home/fergalm/.local/share/fonts
 cd /home/fergalm/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete.otf
 
