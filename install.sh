@@ -68,4 +68,7 @@ sudo apt-get install -y exuberant-ctags build-essential cmake python-dev python3
 sudo pip install livereload speedtest-cli virtualenv virtualenvwrapper
 sudo npm install -g goops
 
-chsh -s /bin/zsh
+"not currently working well with the pi
+if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+    chsh -s /bin/zsh
+fi
