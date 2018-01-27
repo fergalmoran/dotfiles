@@ -2,6 +2,7 @@
 ############################
 #ignore
 ########## Variables
+MACHINE_TYPE=`uname -m`
 
 dir=/home/fergalm/dotfiles                    # dotfiles directory
 olddir=/home/fergalm/dotfiles_old             # old dotfiles backup directory
@@ -53,7 +54,13 @@ git clone https://github.com/bobthecow/git-flow-completion /home/fergalm/.oh-my-
 sudo locale-gen "en_IE.UTF-8"
 
 #install default packages
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+else
+    wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+    sudo dpkg -i node_latest_armhf.deb
+fi
+
 sudo apt update
 sudo apt-get install -y exuberant-ctags build-essential cmake python-dev python3-dev libssl-dev vim-youcompleteme autojump nodejs htop ncdu python-pip python3-pip byobu zsh vim-gtk python-setuptools neovim tree git-extras cowsay fortune winbind libpq-dev xclip whois
 
