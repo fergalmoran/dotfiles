@@ -52,5 +52,5 @@ sudo pip install livereload speedtest-cli virtualenv virtualenvwrapper
 OMF=/home/fergalm/.oh-my-zsh/oh-my-zsh.sh
 if [ ! -f $OMF ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    git clone https://github.com/bobthecow/git-flow-completion /home/fergalm/.oh-my-zsh/custom/plugins/git-flow-completion
 fi
-git clone https://github.com/bobthecow/git-flow-completion /home/fergalm/.oh-my-zsh/custom/plugins/git-flow-completion
