@@ -2,6 +2,8 @@ export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH
+export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/
+export JAVA_HOME=/opt/android/android-studio/jre/
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
