@@ -1,6 +1,4 @@
-#!/bin/bash
-echo "$(whoami)"
-[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
+#!/bin/sh
 
 versionMaj="1"
 versionMin="0"
