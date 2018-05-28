@@ -2,7 +2,7 @@ export PATH=$PATH:/home/fergalm/dotfiles/bin:/opt/android/sdk/platform-tools/:/u
 export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/
 export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/
 export JAVA_HOME=/opt/android/android-studio/jre/
 
@@ -38,7 +38,6 @@ plugins=(
     github
     docker
     docker-compose
-    thefuck
     git-ignore
     git-flow
     git-flow-completion
@@ -80,7 +79,6 @@ _dotnet_zsh_complete()
 compctl -K _dotnet_zsh_complete dotnet
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
 
 export CURRENT_REPO=podnoms
 unalias gr

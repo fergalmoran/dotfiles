@@ -1,3 +1,17 @@
+function gffs(){
+    /usr/local/bin/gr @$CURRENT_REPO git flow feature start $1
+}
+function gfff(){
+    /usr/local/bin/gr @$CURRENT_REPO git flow feature finish $1
+}
+function gfhs(){
+    /usr/local/bin/gr @$CURRENT_REPO git flow hotfix start $1
+}
+function gfhf(){
+    /usr/local/bin/gr @$CURRENT_REPO git flow hotfix finish $1
+}
+
+
 function pips() {
     echo $'\n'$1 >> requirements.txt; pip install $1
 }

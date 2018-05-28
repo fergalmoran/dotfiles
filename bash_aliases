@@ -8,7 +8,7 @@ alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 #.NET stuff
 alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
-alias dndev="export ASPNETCORE_ENVIRONMENT=Production"
+alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
 alias dnrun="dotnet watch run"
 alias dnrest="dotnet restore"
 
