@@ -1,0 +1,49 @@
+search_up () {
+    proj_root=$(pwd -P 2>/dev/null || command pwd)
+    while [ ! -e "$proj_root/$1" ]; do
+      proj_root=${proj_root%/*}
+      if [ -z "$proj_root" ]; then echo ""; return; fi
+    done
+    echo "$proj_root/$1"
+}
+
+virtualenv_check () {
+    VENV_DIR=$(search_up .venv);
+    if [ ! -z $VENV_DIR ]; then
+        if [ ! -z "$VIRTUAL_ENV" ]; then
+            CUR_VENV=$(basename $VIRTUAL_ENV);
+            VENV=$(cat $VENV_DIR);
+            if [ "$VENV" != "$CUR_VENV" ]; then
+                workon $VENV;
+            fi
+        else
+            workon `cat $VENV_DIR`;
+        fi
+    else
+        type deactivate > /dev/null 2>&1
+        if [ $? -eq 0 ]
+        then
+            deactivate
+            unset -f deactivate > /dev/null 2>&1
+        fi
+    fi
+}
+
+dockermachine_check () {
+    MACHINE_DIR=$(search_up .machineenv)
+    if [ ! -z $MACHINE_DIR ]; then
+        echo "Activating $MACHINE_ENV"
+        eval $(docker-machine env `cat $MACHINE_DIR`)
+    else
+        eval $(docker-machine env --unset)
+    fi
+}
+
+cd_hooks () {
+    virtualenv_check
+    dockermachine_check
+}
+
+cd () {
+    builtin cd "$@" && cd_hooks
+}

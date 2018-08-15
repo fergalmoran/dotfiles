@@ -5,12 +5,13 @@ alias ls="ls -alh"
 
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 
-
+#kubernetes stuff
+alias k="kubectl"
 #.NET stuff
 alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
-alias dnrun="dotnet watch run"
-alias dnrest="dotnet restore"
+alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch run"
+alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch run"
 
 
 #Django stuff
