@@ -84,3 +84,5 @@ export CURRENT_REPO=podnoms
 unalias gr
 unalias g
 source ~/.bash_aliases
+source ~/.bash_functions
+source ~/.bash_dirhooks
