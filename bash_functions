@@ -11,6 +11,9 @@ function gfhf(){
     /usr/local/bin/gr @$CURRENT_REPO git flow hotfix finish $1
 }
 
+function mkdir {
+  command mkdir $1 && cd $1
+}
 
 function pips() {
     echo $'\n'$1 >> requirements.txt; pip install $1

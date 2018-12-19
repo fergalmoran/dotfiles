@@ -4,15 +4,20 @@ HOSTNAME=`hostname -s`
 alias ls="ls -alh"
 
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
+
+alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 
 #kubernetes stuff
 alias k="kubectl"
 #.NET stuff
 alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
-alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch run"
-alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch run"
+alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
+alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 
+#docker stuff
+alias dcup="docker-compose up -d && docker-compose logs -f"
 
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"
@@ -37,9 +42,10 @@ alias dbv="dbeaver > /dev/null 2>&1 &"
 alias sqlops="/opt/sqlops-linux-x64/sqlops > /dev/null 2>&1 &"
 alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 
-alias reloadbashrc="source ~/.bashrc"
+# alias reloadbashrc="source ~/.bashrc"
+alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999 --host $IP"
-alias upd="sudo apt update && sudo apt dist-upgrade && sudo apt autoremove"
+alias upd="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove"
 alias psql="sudo -u postgres psql deepsouthsounds"
 alias code="/usr/bin/code-insiders"
 alias c="/usr/bin/code-insiders ."
@@ -76,16 +82,4 @@ doPsKill(){
 }
 alias pskill=doPsKill
 
-alias dcx="docker-compose -H podnoms.com:2376 --tlsverify --tlscacert /mnt/niles/sharing/docker-tls/podnoms/ca.pem --tlscert /mnt/niles/sharing/docker-tls/podnoms/cert.pem --tlskey /mnt/niles/sharing/docker-tls/podnoms/key.pem"
-
-case $HOSTNAME in
-    (NILES) alias dockerx="docker --tlsverify -H=podnoms.com:2376 --tlscacert=/srv/sharing/docker-tls/podnoms/ca.pem --tlscert=/srv/sharing/docker-tls/podnoms/cert.pem --tlskey=/srv/sharing/docker-tls/podnoms/key.pem";;
-    (EDDIE) alias dockerx="docker --tlsverify -H=podnoms.com:2376 --tlscacert=/mnt/niles/sharing/docker-tls/podnoms/ca.pem --tlscert=/mnt/niles/sharing/docker-tls/podnoms/cert.pem --tlskey=/mnt/niles/sharing/docker-tls/podnoms/key.pem";;
-esac
-
-if type "$docker" >  /dev/null; then
-    alias docker-nuke="docker rm $(docker ps -a -q) && docker rmi $(docker images -q)"
-    alias dc='docker-compose'
-    alias docker-rm-untagged='docker rmi -f $(docker images | grep "^<none>" | awk "{print $3}")'
-fi
 alias tmux="TERM=screen-256color-bce tmux attach || TERM=screen-256color-bce tmux"

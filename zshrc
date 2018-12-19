@@ -2,10 +2,11 @@ export PATH=$PATH:/home/fergalm/dotfiles/bin:/opt/android/sdk/platform-tools/:/u
 export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/
+export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli
 export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/:/home/fergalm/working/chromium/depot_tools
 export JAVA_HOME=/opt/android/android-studio/jre/
 
+export WINEPREFIX="/home/fergalm/.wine32" 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -16,7 +17,7 @@ export EDITOR="$VISUAL"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="muse"
-# ZSH_THEME="random"
+#ZSH_THEME="random"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 
@@ -86,3 +87,5 @@ unalias g
 source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_dirhooks
+
+. "/home/fergalm/.acme.sh/acme.sh.env"
