@@ -43,9 +43,6 @@ sudo apt-get install -y exuberant-ctags build-essential cmake python-dev python3
 # Setup default locales
 sudo locale-gen "en_IE.UTF-8"
 
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
 sudo pip install livereload speedtest-cli virtualenv virtualenvwrapper
 
 #install git flow completion
