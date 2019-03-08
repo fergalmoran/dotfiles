@@ -52,6 +52,7 @@ alias code="/usr/bin/code-insiders"
 alias c="/usr/bin/code-insiders ."
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"
+alias dbcreate="docker run -d --restart=always --cpus=".2" --name=dropbox -v /home/fergalm/dev:/dbox/Dropbox/dev -v /home/fergalm/Dropbox:/dbox/Dropbox janeczku/dropbox"
 alias dbignore='find `pwd` -type d -regex ".*\(node_modules\|temp\|tmp\|bower_components\|cache\)$" -prune -exec docker exec -t -i dropbox dropbox exclude add {} \;'
 alias dbrm="find . -name \*\'s\ conflicted\ copy\ \* -exec rm  {} \;"
 
