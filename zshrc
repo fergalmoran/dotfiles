@@ -1,4 +1,4 @@
-export PATH=$PATH:/home/fergalm/dotfiles/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin
+export PATH=$PATH:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin
 export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
@@ -12,6 +12,8 @@ export ZSH=~/.oh-my-zsh
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+export OPENFAAS_URL=swarm-master:8080
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.

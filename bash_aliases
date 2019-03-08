@@ -7,17 +7,18 @@ alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
 
 alias tmuxj="export DISPLAY=:0 && tmux -d attach"
-
+alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
 #kubernetes stuff
 alias k="kubectl"
 #.NET stuff
 alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
-alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
+alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run --urls http://0.0.0.0:5000"
 alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 
 #docker stuff
 alias dcup="docker-compose up -d && docker-compose logs -f"
+alias dcdup="docker-compose stop && docker-compose pull && docker-compose up -d && docker-compose logs -f"
 
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"
@@ -50,8 +51,8 @@ alias psql="sudo -u postgres psql deepsouthsounds"
 alias code="/usr/bin/code-insiders"
 alias c="/usr/bin/code-insiders ."
 
-alias dbstatus="dropbox.py status"
-alias dbignore='find `pwd` -type d -regex ".*\(node_modules\|temp\|tmp\|bower_components\|cache\)$" -prune -exec dropbox exclude add {} \;'
+alias dbstatus="docker exec -t -i dropbox dropbox status"
+alias dbignore='find `pwd` -type d -regex ".*\(node_modules\|temp\|tmp\|bower_components\|cache\)$" -prune -exec docker exec -t -i dropbox dropbox exclude add {} \;'
 alias dbrm="find . -name \*\'s\ conflicted\ copy\ \* -exec rm  {} \;"
 
 alias ping="ping -O"
