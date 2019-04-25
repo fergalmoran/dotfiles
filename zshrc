@@ -6,7 +6,7 @@ export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.loc
 export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/:/home/fergalm/working/chromium/depot_tools
 export JAVA_HOME=/opt/android/android-studio/jre/
 
-export WINEPREFIX="/home/fergalm/.wine32" 
+export WINEPREFIX="/home/fergalm/.wine32"
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -40,8 +40,10 @@ plugins=(
     git
     github
     docker
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    gitignore
     docker-compose
-    git-ignore
     git-flow
     git-flow-completion
     virtualenvwrapper
@@ -90,4 +92,21 @@ source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_dirhooks
 
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 . "/home/fergalm/.acme.sh/acme.sh.env"
+source ~/.privateenv
+
+if [ -f ".oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ]; then
+    echo "ZSH'ing"
+    plugins+=(zsh-syntax-highlighting)
+    # Due to the following issue:
+    # https://github.com/zsh-users/zsh-syntax-highlighting/issues/295
+    # Syntax highlighting is really slow when pasting long text. This speeds it
+    # up to just a slight delay
+    zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+else
+    echo "NOT ZSH'ing"
+fi

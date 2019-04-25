@@ -6,6 +6,10 @@ alias ls="ls -alh"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
 
+alias code="code-insiders"
+alias c="code-insiders"
+
+
 alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
 #kubernetes stuff
@@ -35,7 +39,7 @@ alias pgadmin="docker run -it --rm -v /home/fergalm/working/pgadmin-data:/pgadmi
 alias runmssql="docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=cTXu1nJLCpC/c' -p 1433:1433 -v /home/fergalm/working/mssql-data:/var/opt/mssql -d microsoft/mssql-server-linux"
 alias tor="docker run -i -t --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro paulczar/torbrowser"
 
-alias g="/usr/local/bin/gr @$CURRENT_REPO git "
+alias g="/usr/bin/gr @$CURRENT_REPO git "
 
 alias sqlw="/opt/SqlWorkbench/sqlworkbench.sh &"
 alias se="/opt/StorageExplorer/StorageExplorer > /dev/null 2>&1 &"
@@ -48,8 +52,6 @@ alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999 --host $IP"
 alias upd="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove"
 alias psql="sudo -u postgres psql deepsouthsounds"
-alias code="/usr/bin/code-insiders"
-alias c="/usr/bin/code-insiders ."
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"
 alias dbcreate="docker run -d --restart=always --cpus=".2" --name=dropbox -v /home/fergalm/dev:/dbox/Dropbox/dev -v /home/fergalm/Dropbox:/dbox/Dropbox janeczku/dropbox"
