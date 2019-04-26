@@ -100,13 +100,10 @@ fi
 source ~/.privateenv
 
 if [ -f ".oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ]; then
-    echo "ZSH'ing"
     plugins+=(zsh-syntax-highlighting)
     # Due to the following issue:
     # https://github.com/zsh-users/zsh-syntax-highlighting/issues/295
     # Syntax highlighting is really slow when pasting long text. This speeds it
     # up to just a slight delay
     zstyle ':bracketed-paste-magic' active-widgets '.self-*'
-else
-    echo "NOT ZSH'ing"
 fi
