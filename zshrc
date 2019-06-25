@@ -1,5 +1,7 @@
-export PATH=$PATH:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin
+export PATH=$PATH:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin:/home/fergalm/bin/flutter/bin/:/home/fergalm/.dotnet/tools
 export TERM="xterm-256color"
+export EDITOR='vim'
+export VISUAL='vim'
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli
@@ -13,7 +15,10 @@ export ZSH=~/.oh-my-zsh
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-export OPENFAAS_URL=swarm-master:8080
+export OPENFAAS_URL=cluster-master:31112
+
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -40,6 +45,7 @@ plugins=(
     git
     github
     docker
+    docker-compose
     zsh-syntax-highlighting
     zsh-autosuggestions
     gitignore
@@ -92,18 +98,15 @@ source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_dirhooks
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
-
-. "/home/fergalm/.acme.sh/acme.sh.env"
-source ~/.privateenv
-
-if [ -f ".oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ]; then
+if [ -f "/home/fergalm/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ]; then
     plugins+=(zsh-syntax-highlighting)
     # Due to the following issue:
     # https://github.com/zsh-users/zsh-syntax-highlighting/issues/295
     # Syntax highlighting is really slow when pasting long text. This speeds it
     # up to just a slight delay
     zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+else
+    echo not found
 fi
+source <(kubectl completion zsh)
+export KUBECONFIG=$HOME/.kube/config

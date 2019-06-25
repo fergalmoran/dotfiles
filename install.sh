@@ -37,8 +37,11 @@ cd pwfonts && ./install.sh
 #install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm /home/fergalm/.tmux/plugins/tpm
 
-sudo apt-get install -y exuberant-ctags build-essential cmake python-dev python3-dev libssl-dev vim-youcompleteme autojump htop ncdu python-pip python3-pip byobu zsh vim-gtk python-setuptools tree git-extras cowsay fortune winbind libpq-dev xclip whois
-
+sudo apt-get install -y nfs-common exuberant-ctags build-essential cmake \
+    python-dev python3-dev libssl-dev vim-youcompleteme autojump htop \
+    ncdu python-pip python3-pip byobu zsh vim-gtk python-setuptools \
+    tree git-extras cowsay fortune winbind libpq-dev xclip whois \
+    git-flow 
 
 # Setup default locales
 sudo locale-gen "en_IE.UTF-8"

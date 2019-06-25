@@ -10,11 +10,10 @@ rm -f $(ls Postman*.tar.gz)
 
 echo "Downloading latest Postman tarball"
 curlExists=$(command -v curl)
-
 if [ -z $curlExists ]; then
-	wget -q --show-progress "https://dl.pstmn.io/download/latest/linux64" --content-disposition
+	wget -q --show-progress "https://dl.pstmn.io/download/channel/canary/linux64" --content-disposition
 else
-	curl -# "https://dl.pstmn.io/download/latest/linux64" -O -J
+	curl -# "https://dl.pstmn.io/download/channel/canary/linux64" -O -J
 fi
 
 if [ $? -gt 0 ]; then
