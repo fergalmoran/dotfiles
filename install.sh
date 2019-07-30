@@ -6,7 +6,7 @@ MACHINE_TYPE=`uname -m`
 
 dir=/home/fergalm/dotfiles                    # dotfiles directory
 olddir=/home/fergalm/dotfiles_old             # old dotfiles backup directory
-files="pylint.rc tmux.conf zshrc bash_aliases bash_functions bash_dirhooks sqliterc Xresources"    # list of files/folders to symlink in homedir
+files="pylint.rc tmux.conf muttrc zshrc bash_aliases bash_functions bash_dirhooks sqliterc Xresources"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -27,6 +27,7 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file /home/fergalm/.$file
 done
+read -p "Press enter to continue"
 
 # merge Xresources
 xrdb -merge /home/fergalm/.Xresources

@@ -12,12 +12,15 @@ alias c="code-insiders"
 
 alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
+#javascript stuff
+alias nodenuke="rm -rf package-lock.json node_modules && npm i"
+
 #kubernetes stuff
 alias k="kubectl"
 #.NET stuff
 alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
-alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run --urls http://0.0.0.0:5000"
+alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 
 #docker stuff
@@ -57,7 +60,6 @@ alias dbstatus="docker exec -t -i dropbox dropbox status"
 alias dbcreate="docker run -d --restart=always --cpus=".2" --name=dropbox -v /home/fergalm/dev:/dbox/Dropbox/dev -v /home/fergalm/Dropbox:/dbox/Dropbox janeczku/dropbox"
 alias dbignore='find `pwd` -type d -regex ".*\(node_modules\|temp\|tmp\|bower_components\|cache\)$" -prune -exec docker exec -t -i dropbox dropbox exclude add {} \;'
 alias dbrm="find . -name \*\'s\ conflicted\ copy\ \* -exec rm  {} \;"
-
 alias ping="ping -O"
 
 alias pbcopy='xclip -selection clipboard'
