@@ -24,8 +24,8 @@ export PATH=$PATH:$HOME/dotnet
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="muse"
-ZSH_THEME="random"
-#ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="random"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 
 # Would you like to use another custom folder than $ZSH/custom?
