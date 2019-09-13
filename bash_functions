@@ -11,7 +11,7 @@ function gfhf(){
     /usr/bin/gr @$CURRENT_REPO git flow hotfix finish $1
 }
 
-function mkdir {
+function md {
   command mkdir $1 && cd $1
 }
 

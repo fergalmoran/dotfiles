@@ -24,8 +24,8 @@ export PATH=$PATH:$HOME/dotnet
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="muse"
-#ZSH_THEME="random"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="random"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -98,15 +98,21 @@ source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_dirhooks
 
-if [ -f "/home/fergalm/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ]; then
-    plugins+=(zsh-syntax-highlighting)
-    # Due to the following issue:
-    # https://github.com/zsh-users/zsh-syntax-highlighting/issues/295
-    # Syntax highlighting is really slow when pasting long text. This speeds it
-    # up to just a slight delay
-    zstyle ':bracketed-paste-magic' active-widgets '.self-*'
-else
-    echo not found
-fi
 source <(kubectl completion zsh)
 export KUBECONFIG=$HOME/.kube/config
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# Add snaps to bin path
+source /etc/profile.d/apps-bin-path.sh
