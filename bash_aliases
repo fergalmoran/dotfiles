@@ -19,6 +19,7 @@ alias nodenuke="rm -rf package-lock.json node_modules && npm i"
 alias k="kubectl"
 #.NET stuff
 alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
+alias dndel="find . -iname \"bin\" -o -iname \"obj\" | xargs rm -rfv"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
 alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"

@@ -2,7 +2,8 @@ export PATH=$PATH:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/opt/android/s
 export TERM="xterm-256color"
 export EDITOR='vim'
 export VISUAL='vim'
-
+# Python stuff
+export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli
 export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/:/home/fergalm/working/chromium/depot_tools
@@ -17,8 +18,8 @@ export EDITOR="$VISUAL"
 
 export OPENFAAS_URL=cluster-master:31112
 
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
+#export DOTNET_ROOT=$HOME/dotnet
+#export PATH=$PATH:$HOME/dotnet
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -30,11 +31,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv)
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=true
+source /home/fergalm/dotfiles/pl9k.config
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -100,6 +97,8 @@ source ~/.bash_dirhooks
 
 source <(kubectl completion zsh)
 export KUBECONFIG=$HOME/.kube/config
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
