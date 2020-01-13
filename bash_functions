@@ -1,14 +1,14 @@
 function gffs(){
-    /usr/bin/gr @$CURRENT_REPO git flow feature start $1
+    gr @$CURRENT_REPO git flow feature start $1
 }
 function gfff(){
-    /usr/bin/gr @$CURRENT_REPO git flow feature finish $1
+    gr @$CURRENT_REPO git flow feature finish $1
 }
 function gfhs(){
-    /usr/bin/gr @$CURRENT_REPO git flow hotfix start $1
+    gr @$CURRENT_REPO git flow hotfix start $1
 }
 function gfhf(){
-    /usr/bin/gr @$CURRENT_REPO git flow hotfix finish $1
+    gr @$CURRENT_REPO git flow hotfix finish $1
 }
 
 function md {

@@ -1,4 +1,4 @@
-export PATH=$PATH:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin:/home/fergalm/bin/flutter/bin/:/home/fergalm/.dotnet/tools
+export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin:/home/fergalm/bin/flutter/bin/:/home/fergalm/.dotnet/tools
 export TERM="xterm-256color"
 export EDITOR='vim'
 export VISUAL='vim'
