@@ -2,3 +2,5 @@ pwfonts/
 bin/bin
 .private.env
 bin/jetbrains-toolbox
+bin/scw
+bin/ytop

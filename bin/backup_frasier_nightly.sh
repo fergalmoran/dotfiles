@@ -1,9 +1,35 @@
-#!/usr/bin/bash
-#unison -auto -batch -prefer newer -times=true /home/fergalm/dev/ /mnt/niles/dev/
+#!/usr/bin/env bash
+
+mkdir -p /mnt/niles/sharing/backups/frasier_nightly/system/
+echo Backing up dev to NILES
 rsync --archive \
       --delete \
       --progress \
       --human-readable \
-      --exclude node_modules \
-      ~/dev \
-      /mnt/niles/sharing/backups/frasier_nightly/dev
+      --exclude '*node_modules*' \
+      --exclude '*/.debris/' \
+      ~/dev /mnt/niles/sharing/backups/frasier_nightly/
+
+echo Backing up dev to BOX
+sudo chown fergalm /home/fergalm/.config/rclone/rclone.conf
+rclone copy \
+	/home/fergalm/dev BOX:backups/frasier/dev \
+	--exclude="**/node_modules/**" \
+	--exclude=".debris/**" \
+	--exclude="**/bin/**" \
+	--exclude="**/obj/**" \
+	-v --stats 5m --stats-log-level INFO
+
+echo Backup up config files
+cp /etc/hosts /etc/fstab ~/.zsh_history /mnt/niles/sharing/backups/frasier_nightly/system
+cp -rf ~/.ssh /mnt/niles/sharing/backups/frasier_nightly/system
+cp -rf ~/.docker /mnt/niles/sharing/backups/frasier_nightly/system
+
+rsync --archive \
+      --delete \
+      --progress \
+      --human-readable \
+      --exclude google-chrome-unstable \
+      --exclude google-chrome \
+      --exclude "Code - Insiders" \
+      ~/.config /mnt/niles/sharing/backups/frasier_nightly/system/.config
