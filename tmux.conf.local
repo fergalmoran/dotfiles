@@ -5,6 +5,11 @@
 
 
 # -- navigation ----------------------------------------------------------------
+# switch panes using Alt-arrow without prefix
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
 
 # if you're running tmux within iTerm2
 #   - and tmux is 1.9 or 1.9a
@@ -279,7 +284,13 @@ tmux_conf_copy_to_os_clipboard=false
 
 # start with mouse mode enabled
 #set -g mouse on
-
+set -g mouse on
+set -g default-terminal "screen-256color"
+# set-window-option -g mode-mouse on
+# set-option -g mode-mouse on
+# set-option -g mouse-select-pane on
+# set-option -g mouse-resize-pane on
+#
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi
