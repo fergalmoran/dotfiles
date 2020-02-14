@@ -99,6 +99,8 @@ source <(kubectl completion zsh)
 export KUBECONFIG=$HOME/.kube/config
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+#rust stuff
+source $HOME/.cargo/env
 
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
