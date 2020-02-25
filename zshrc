@@ -1,4 +1,4 @@
-export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/opt/android/sdk/platform-tools/:/usr/lib/go-1.9/bin:/home/fergalm/bin/flutter/bin/:/home/fergalm/.dotnet/tools
+export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin:/home/fergalm/.dotnet/tools
 export TERM="xterm-256color"
 export EDITOR='vim'
 export VISUAL='vim'
@@ -6,8 +6,6 @@ export VISUAL='vim'
 export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli
-export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/:/home/fergalm/working/chromium/depot_tools
-export JAVA_HOME=/opt/android/android-studio/jre/
 
 export WINEPREFIX="/home/fergalm/.wine32"
 # Path to your oh-my-zsh installation.
@@ -54,7 +52,6 @@ plugins=(
 export ZSH=/home/fergalm/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 source /usr/share/autojump/autojump.sh
-source /usr/local/bin/virtualenvwrapper.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -117,3 +114,9 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # Add snaps to bin path
 source /etc/profile.d/apps-bin-path.sh
+
+#android stuff
+ANDROID_HOME=/opt/android/sdk
+
+export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/
+export JAVA_HOME=/opt/android/android-studio/jre/
