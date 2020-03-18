@@ -120,3 +120,5 @@ ANDROID_HOME=/opt/android/sdk
 
 export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/
 export JAVA_HOME=/opt/android/android-studio/jre/
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

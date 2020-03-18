@@ -1,8 +1,1 @@
-#!/usr/bin/env bash
 
-rm -rf /mnt/niles/sharing/backups/frasier
-mkdir /mnt/niles/sharing/backups/frasier
-
-cp /etc/hosts /etc/fstab /mnt/niles/sharing/backups/frasier/
-cp -rf ~/.ssh /mnt/niles/sharing/backups/frasier/
-cp -rf ~/.docker /mnt/niles/sharing/backups/frasier/
