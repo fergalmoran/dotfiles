@@ -10,7 +10,9 @@ function gfhs(){
 function gfhf(){
     gr @$CURRENT_REPO git flow hotfix finish $1
 }
-
+function gitzip() { 
+	git archive -o $@.zip HEAD
+}
 function md {
   command mkdir $1 && cd $1
 }

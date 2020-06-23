@@ -1,5 +1,5 @@
 IP=$(hostname -I | cut -d' ' -f1)
-HOSTNAME=`hostname -s`
+HOSTNAME=$(hostname -s)
 # ignore
 alias ls="ls -alh"
 
@@ -8,7 +8,6 @@ alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.ex
 
 alias code="code-insiders"
 alias c="code-insiders"
-
 
 alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
@@ -21,11 +20,13 @@ alias k="kubectl"
 alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dndel="find . -iname \"bin\" -o -iname \"obj\" | xargs rm -rfv"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
-alias dnrun="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
+alias pnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 
 #docker stuff
 alias dcup="docker-compose up -d && docker-compose logs -f"
+alias dcstop="docker-compose stop"
+alias dclog="docker-compose logs -f"
 alias dcdup="docker-compose stop && docker-compose pull && docker-compose up -d && docker-compose logs -f"
 
 #Django stuff
@@ -53,7 +54,7 @@ alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 
 # alias reloadbashrc="source ~/.bashrc"
 alias rlz="source ~/.zshrc"
-alias server="livereload -p 9999 --host $IP"
+alias server="livereload -p 9999"
 alias upd="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo snap refresh"
 alias psql="sudo -u postgres psql deepsouthsounds"
 
@@ -74,19 +75,21 @@ alias git-browse="xdg-open \`git remote -v | grep git@github.com | grep fetch | 
 
 alias andconnect='adb connect 10.1.1.102:5555'
 
-doAgFind(){
+doAgFind() {
     ag --ignore-dir node_modules --ignore-dir bower_components $1
 }
 alias ag=doAgFind
 
-doGrepSearch(){
+doGrepSearch() {
     find | grep $1
 }
 alias f=doGrepSearch
 
-doPsKill(){
+doPsKill() {
     sudo ps aux | grep -ie $1 | awk '{print $2}' | xargs kill -9
 }
 alias pskill=doPsKill
 
 alias tmux="TERM=screen-256color-bce tmux attach || TERM=screen-256color-bce tmux"
+alias dnr="dotnet watch run"
+alias ngs="ng serve"
