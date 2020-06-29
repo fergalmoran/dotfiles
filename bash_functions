@@ -13,6 +13,13 @@ function gfhf(){
 function gitzip() { 
 	git archive -o $@.zip HEAD
 }
+function gitReleaseNoVersion() {
+    git checkout trunk && git merge develop && git push origin trunk develop && git checkout develop
+}
+function gitRelease() {
+    npm version patch && \
+        git checkout trunk && git merge develop && git push origin trunk develop && git checkout develop
+}
 function md {
   command mkdir $1 && cd $1
 }

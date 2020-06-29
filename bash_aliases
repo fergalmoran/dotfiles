@@ -1,5 +1,3 @@
-IP=$(hostname -I | cut -d' ' -f1)
-HOSTNAME=$(hostname -s)
 # ignore
 alias ls="ls -alh"
 

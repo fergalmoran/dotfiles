@@ -1,5 +1,4 @@
 export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin:/home/fergalm/.dotnet/tools
-export TERM="xterm-256color"
 export EDITOR='vim'
 export VISUAL='vim'
 # Python stuff
@@ -16,8 +15,9 @@ export EDITOR="$VISUAL"
 
 export OPENFAAS_URL=cluster-master:31112
 
-#export DOTNET_ROOT=$HOME/dotnet
-#export PATH=$PATH:$HOME/dotnet
+#export DOTNET_ROOT=$HOME/.dotnet
+export DOTNET_ROOT=/opt/dotnet
+#export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -26,6 +26,7 @@ export OPENFAAS_URL=cluster-master:31112
 #ZSH_THEME="random"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
+unsetopt MULTIBYTE
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -51,7 +52,8 @@ plugins=(
 )
 export ZSH=/home/fergalm/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-source /usr/share/autojump/autojump.sh
+[[ -s /home/fergalm/.autojump/etc/profile.d/autojump.sh ]] && source /home/fergalm/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -97,7 +99,6 @@ export KUBECONFIG=$HOME/.kube/config
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 #rust stuff
-source $HOME/.cargo/env
 
 # This speeds up pasting w/ autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238
@@ -111,9 +112,6 @@ pastefinish() {
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
-
-# Add snaps to bin path
-source /etc/profile.d/apps-bin-path.sh
 
 #android stuff
 ANDROID_HOME=/opt/android/sdk
