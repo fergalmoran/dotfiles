@@ -54,6 +54,7 @@ alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999"
 alias upd="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo snap refresh"
+alias updarch="yay -Syu"
 alias psql="sudo -u postgres psql deepsouthsounds"
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"

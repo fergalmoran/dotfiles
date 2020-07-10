@@ -15,9 +15,9 @@ export EDITOR="$VISUAL"
 
 export OPENFAAS_URL=cluster-master:31112
 
-#export DOTNET_ROOT=$HOME/.dotnet
-export DOTNET_ROOT=/opt/dotnet
-#export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+#export DOTNET_ROOT=/opt/dotnet
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
