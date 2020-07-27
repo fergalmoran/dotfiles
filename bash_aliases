@@ -1,6 +1,8 @@
 # ignore
 alias ls="ls -alh"
 
+alias ytdl="youtube-dl"
+
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
 
@@ -11,7 +13,9 @@ alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
 #javascript stuff
 alias nodenuke="rm -rf package-lock.json node_modules && npm i"
-
+#editorconfigs
+alias js_editorconfig="cp /home/fergalm/dotfiles/editorconfigs/editorconfig.javascript .editorconfig"
+alias csharp_editorconfig="cp /home/fergalm/dotfiles/editorconfigs/editorconfig.csharp .editorconfig"
 #kubernetes stuff
 alias k="kubectl"
 #.NET stuff
@@ -54,7 +58,7 @@ alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999"
 alias upd="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo snap refresh"
-alias updarch="yay -Syu"
+alias updarch="yay -Syu && sudo snap refresh"
 alias psql="sudo -u postgres psql deepsouthsounds"
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"

@@ -1,4 +1,4 @@
-export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin:/home/fergalm/.dotnet/tools
+export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin
 export EDITOR='vim'
 export VISUAL='vim'
 # Python stuff
@@ -16,8 +16,10 @@ export EDITOR="$VISUAL"
 export OPENFAAS_URL=cluster-master:31112
 
 #export DOTNET_ROOT=/opt/dotnet
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+#export DOTNET_ROOT=$HOME/.dotnet
+export DOTNET_ROOT=/usr/share/dotnet
+export PATH=$PATH:/usr/share/dotnet
+export PATH="$PATH:/home/fergalm/.dotnet/tools"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
