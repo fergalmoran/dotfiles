@@ -1,4 +1,5 @@
 # ignore
+alias vi="vim"
 alias ls="ls -alh"
 
 alias ytdl="youtube-dl"

@@ -4,6 +4,7 @@ mkdir -p /mnt/niles/sharing/backups/frasier_nightly/system/
 
 echo Backup up config files
 cp /etc/hosts /etc/fstab ~/.zsh_history /mnt/niles/sharing/backups/frasier_nightly/system
+cp -rf ~/.zsh_history /mnt/niles/sharing/backups/frasier_nightly/system
 cp -rf ~/.ssh /mnt/niles/sharing/backups/frasier_nightly/system
 cp -rf ~/.docker /mnt/niles/sharing/backups/frasier_nightly/system
 cp -rf ~/.kube /mnt/niles/sharing/backups/frasier_nightly/system

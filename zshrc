@@ -1,3 +1,4 @@
+export LANG="en_IE.UTF-8"
 export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin
 export EDITOR='vim'
 export VISUAL='vim'
