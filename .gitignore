@@ -4,3 +4,4 @@ bin/bin
 bin/jetbrains-toolbox
 bin/scw
 bin/ytop
+.privateenv

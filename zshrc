@@ -2,10 +2,14 @@ export LANG="en_IE.UTF-8"
 export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin
 export EDITOR='vim'
 export VISUAL='vim'
+source ~/dotfiles/.privatenv
 # Python stuff
 export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli
+
+# The Fuck!!
+eval $(thefuck --alias)
 
 export WINEPREFIX="/home/fergalm/.wine32"
 # Path to your oh-my-zsh installation.
@@ -62,7 +66,7 @@ autoload -U compinit && compinit -u
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='gvim'
+  export EDITOR='vim'
 fi
 
 # ssh
@@ -130,3 +134,4 @@ export GOPATH=$(go env GOPATH)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+neofetch

@@ -1,7 +1,12 @@
 #!/bin/sh
+# reset jetbrains ide evals
 
-cd ~/.WebStorm2017.2/
-rm config/eval/*evaluation.key
-rm config/options/options.xml
-cd ~/.java/.userPrefs/jetbrains
-rm -rf webstorm/
+OS_NAME=$(uname -s)
+JB_PRODUCTS="IntelliJIdea CLion PhpStorm GoLand PyCharm WebStorm Rider DataGrip RubyMine AppCode"
+
+for PRD in $JB_PRODUCTS; do
+	rm -rf ~/.java/.userPrefs/prefs.xml
+	rm -rf ~/.java/.userPrefs/jetbrains/prefs.xml
+	rm -rf ~/.config/JetBrains/${PRD}*/eval/
+	rm -rf ~/.config/JetBrains/${PRD}*/options/other.xml
+done
