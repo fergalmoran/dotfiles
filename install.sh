@@ -27,6 +27,11 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file /home/fergalm/.$file
 done
+
+echo Setting git stuff
+git config --global user.email "fergal.moran@gmail.com"
+git config --global user.name "Fergal Moran"
+
 exit
 read -p "Press enter to continue"
 

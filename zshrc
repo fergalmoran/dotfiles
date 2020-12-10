@@ -20,18 +20,16 @@ export EDITOR="$VISUAL"
 
 export OPENFAAS_URL=cluster-master:31112
 
-#export DOTNET_ROOT=/opt/dotnet
-#export DOTNET_ROOT=$HOME/.dotnet
-export DOTNET_ROOT=/usr/share/dotnet
-export PATH=$PATH:/usr/share/dotnet
-export PATH="$PATH:/home/fergalm/.dotnet/tools"
+export DOTNET_ROOT=$HOME/dotnet
+export DOTNET_HOST_PATH=$DOTNET_ROOT
+export PATH="$DOTNET_ROOT:$PATH:/home/fergalm/.dotnet/tools/"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="muse"
 #ZSH_THEME="random"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 unsetopt MULTIBYTE
 
@@ -44,15 +42,16 @@ source /home/fergalm/dotfiles/pl9k.config
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
+
+# This hangs when trying to type tmux
+# zsh-syntax-highlighting
 plugins=(
     git
     github
     docker
     docker-compose
-    zsh-syntax-highlighting
     zsh-autosuggestions
     gitignore
-    docker-compose
     git-flow
     git-flow-completion
     virtualenvwrapper
@@ -123,8 +122,9 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 #android stuff
 ANDROID_HOME=/opt/android/sdk
 
-export PATH=$PATH:/opt/android/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/
+export PATH=$PATH:/opt/flutter/bin:/opt/android/sdk/tools:/opt/android/sdk/platform-tools:/opt/android/sdk/tools/bin/
 export JAVA_HOME=/opt/android/android-studio/jre/
+export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
@@ -134,4 +134,6 @@ export GOPATH=$(go env GOPATH)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 neofetch

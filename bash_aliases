@@ -1,14 +1,16 @@
 # ignore
 alias vi="vim"
-alias ls="ls -alh"
+alias ls="lsd -alh"
 
 alias ytdl="youtube-dl"
+alias findpis="arp -na | grep -i 'b8:27:eb'"
 
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
 
 alias code="code-insiders"
 alias c="code-insiders"
+alias edclust="code /home/fergalm/dev/clusters/workspace.code-workspace"
 
 alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
@@ -27,10 +29,11 @@ alias pnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project .
 alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 
 #docker stuff
-alias dcup="docker-compose up -d && docker-compose logs -f"
+alias dcup="docker-compose up --remove-orphans"
+alias dcupd="docker-compose up --remove-orphans -d && docker-compose logs -f"
 alias dcstop="docker-compose stop"
 alias dclog="docker-compose logs -f"
-alias dcdup="docker-compose stop && docker-compose pull && docker-compose up -d && docker-compose logs -f"
+alias dcdup="docker-compose stop --remove-orphans && docker-compose pull && docker-compose up -d && docker-compose logs -f"
 
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"

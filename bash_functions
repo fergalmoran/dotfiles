@@ -1,3 +1,10 @@
+function add_ferglie_ip() {
+    az account set --subscription DSS 
+    az network dns record-set a add-record -g rg-ferglie -z fergl.ie -n $1 -a 109.255.216.213
+}
+function kcda(){
+    kubectl delete -f ./$1 && kubectl apply -f ./$1 && watch kubectl get pods --namespace default
+}
 function gffs(){
     gr @$CURRENT_REPO git flow feature start $1
 }
