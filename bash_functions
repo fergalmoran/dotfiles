@@ -1,3 +1,19 @@
+#!/usr/bin/env bash
+function ff(){
+    find | grep -i $1
+}
+function run_osx() {
+    docker run \
+        --device /dev/kvm \
+        --device /dev/snd \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        fmosx
+}
+function dnefm(){
+    #creates a new .net migration and applies it
+    dotnet ef migrations add $1
+    dotnet ef database update 
+}
 function add_ferglie_ip() {
     az account set --subscription DSS 
     az network dns record-set a add-record -g rg-ferglie -z fergl.ie -n $1 -a 109.255.216.213
@@ -38,13 +54,20 @@ function pips() {
 kubetoken(){
     kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^kubernetes-dashboard-token-/{print $1}') | awk '$1=="token:"{print $2}' | pbcopy
 }
-
-function reset_webstorm(){
-    cd ~/.WebStorm*
-    rm config/eval/WebStorm*evaluation.key
-    rm config/options/options.xml
-    cd ~/.java/.userPrefs/jetbrains
-    rm -rf webstorm
+function reset_rider() {
+    _reset_jb Rider
+}
+function reset_pycharm() {
+    _reset_jb PyCharm
+}
+function reset_webstorm() {
+    _reset_jb WebStorm
+}
+function _reset_jb(){
+    rm -rf ~/.config/JetBrains/$1*/eval
+    rm -rf ~/.config/JetBrains/$1*/options/other.xml
+    sed -i -E 's/<property name=\"evl.*\".*\/>//' ~/.config/JetBrains/$1*/options/other.xml
+    # rm -rf ~/.java/.userPrefs/jetbrains/rider$1/
 }
 
 cb() {

@@ -13,6 +13,8 @@ rsync --delete --recursive --archive --progress /etc/cron.* niles:/srv/sharing/b
 rsync --delete --recursive --archive --progress /home/fergalm/.ssh niles:/srv/sharing/backups/frasier/home
 rsync --delete --recursive --archive --progress /home/fergalm/.docker niles:/srv/sharing/backups/frasier/home
 rsync --delete --recursive --archive --progress /home/fergalm/.kube niles:/srv/sharing/backups/frasier/home
+rsync --delete --recursive --archive --progress /home/fergalm/.config niles:/srv/sharing/backups/frasier/home/config
+rsync --delete --recursive --archive --progress /home/fergalm/.prv/env niles:/srv/sharing/backups/frasier/home/prvenv
 
 echo Backing up dev to NILES
 rsync --archive \

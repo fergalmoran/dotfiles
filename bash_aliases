@@ -1,6 +1,7 @@
 # ignore
 alias vi="vim"
 alias ls="lsd -alh"
+alias dmesg="sudo dmesg"
 
 alias ytdl="youtube-dl"
 alias findpis="arp -na | grep -i 'b8:27:eb'"
@@ -8,7 +9,7 @@ alias findpis="arp -na | grep -i 'b8:27:eb'"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
 
-alias code="code-insiders"
+alias code="/usr/bin/code"
 alias c="code-insiders"
 alias edclust="code /home/fergalm/dev/clusters/workspace.code-workspace"
 
@@ -33,7 +34,7 @@ alias dcup="docker-compose up --remove-orphans"
 alias dcupd="docker-compose up --remove-orphans -d && docker-compose logs -f"
 alias dcstop="docker-compose stop"
 alias dclog="docker-compose logs -f"
-alias dcdup="docker-compose stop --remove-orphans && docker-compose pull && docker-compose up -d && docker-compose logs -f"
+alias dcdup="docker-compose stop && docker-compose pull && docker-compose up --remove-orphans -d && docker-compose logs -f"
 
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"
@@ -62,7 +63,8 @@ alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999"
 alias upd="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo snap refresh"
-alias updarch="yay -Syu && sudo snap refresh"
+alias updarch="yay -Syu"
+alias updniles="ssh niles sudo 'apt-get update && sudo apt-get -y dist-upgrade'"
 alias psql="sudo -u postgres psql deepsouthsounds"
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"
@@ -98,5 +100,5 @@ doPsKill() {
 alias pskill=doPsKill
 
 alias tmux="TERM=screen-256color-bce tmux attach || TERM=screen-256color-bce tmux"
-alias dnr="dotnet watch run"
+alias dnr="ASPNETCORE_ENVIRONMENT=development dotnet watch run"
 alias ngs="ng serve"
