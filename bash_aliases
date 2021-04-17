@@ -9,7 +9,7 @@ alias findpis="arp -na | grep -i 'b8:27:eb'"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
 
-alias code="/usr/bin/code"
+alias code="/usr/bin/code-insiders"
 alias c="code-insiders"
 alias edclust="code /home/fergalm/dev/clusters/workspace.code-workspace"
 
