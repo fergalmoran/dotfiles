@@ -13,6 +13,8 @@ alias code="/usr/bin/code-insiders"
 alias c="code-insiders"
 alias edclust="code /home/fergalm/dev/clusters/workspace.code-workspace"
 
+alias yay="paru"
+alias pwgen="openssl rand -base64 32"
 alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
 #javascript stuff
