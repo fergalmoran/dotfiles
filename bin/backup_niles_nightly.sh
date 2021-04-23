@@ -26,7 +26,6 @@ curl 'https://radarr.fergl.ie/api/v3/command' \
     --data-raw '{"name":"Backup"}' \
     --compressed
 ssh frasier 'find /srv/kubes/configs/radarr/Backups/* -type f -mtime +7 -exec rm {} \;'
-exit
 
 echo Backup boot
 sudo tar zcfv /tmp/niles-boot.tar.gz /boot

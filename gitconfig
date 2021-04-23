@@ -1,0 +1,12 @@
+[user]
+	email = fergal.moran@gmail.com
+	name = Fergal Moran
+
+[gitflow "prefix"]
+        feature = @feature/
+        bugfix = @bugfix/
+        release = @release/
+        hotfix = @hotfix/
+        support = @support/
+        versiontag = 
+

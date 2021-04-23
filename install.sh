@@ -6,7 +6,7 @@ MACHINE_TYPE=`uname -m`
 
 dir=/home/fergalm/dotfiles                    # dotfiles directory
 olddir=/home/fergalm/dotfiles_old             # old dotfiles backup directory
-files="pylint.rc tmux.conf muttrc zshrc bash_aliases bash_functions bash_dirhooks sqliterc Xresources"    # list of files/folders to symlink in homedir
+files="gitconfig pylint.rc tmux.conf muttrc zshrc bash_aliases bash_functions bash_dirhooks sqliterc Xresources"    # list of files/folders to symlink in homedir
 
 ##########
 
