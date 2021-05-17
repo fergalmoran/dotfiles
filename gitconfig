@@ -10,3 +10,5 @@
         support = @support/
         versiontag = 
 
+[init]
+	defaultBranch = trunk

@@ -122,6 +122,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 #android stuff
 export ANDROID_HOME=/opt/android/sdk
 export PATH=$PATH:/opt/flutter/bin
+export PATH=$PATH:/opt/android/sdk/platform-tools/
 export JAVA_HOME=/opt/android/android-studio/jre/
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
@@ -136,3 +137,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+source /usr/share/nvm/init-nvm.sh

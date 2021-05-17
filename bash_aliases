@@ -1,6 +1,7 @@
 # ignore
 alias vi="vim"
 alias ls="lsd -alh"
+alias locate="plocate"
 alias dmesg="sudo dmesg"
 
 alias ytdl="youtube-dl"
@@ -37,6 +38,7 @@ alias dcupd="docker-compose up --remove-orphans -d && docker-compose logs -f"
 alias dcstop="docker-compose stop"
 alias dclog="docker-compose logs -f"
 alias dcdup="docker-compose stop && docker-compose pull && docker-compose up --remove-orphans -d && docker-compose logs -f"
+alias dpsa='docker ps -a --format "table {{.ID}} {{.Names}}\t{{printf \"%.25s\" .Image}}\t{{.Status}}\t{{.Ports}}"'
 
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"
