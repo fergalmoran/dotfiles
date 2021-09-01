@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=ReBirth manual
+Exec=env WINEPREFIX="/home/fergalm/.wine32" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/fergalm/.wine32/dosdevices/c:/users/fergalm/Start\\ Menu/Programs/Propellerhead/ReBirth\\ RB-338/ReBirth\\ manual.lnk
+Type=Application
+StartupNotify=true
+Icon=9A81_ReBirth manual.0

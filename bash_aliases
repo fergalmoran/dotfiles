@@ -4,6 +4,8 @@ alias ls="lsd -alh"
 alias locate="plocate"
 alias dmesg="sudo dmesg"
 
+alias mutt="neomutt"
+alias cat="bat"
 alias ytdl="youtube-dl"
 alias findpis="arp -na | grep -i 'b8:27:eb'"
 
@@ -30,6 +32,7 @@ alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dndel="find . -iname \"bin\" -o -iname \"obj\" | xargs rm -rfv"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
 alias pnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
+alias mnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./mixyboos-api/mixyboos-api.csproj run"
 alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 
 #docker stuff
@@ -38,6 +41,7 @@ alias dcupd="docker-compose up --remove-orphans -d && docker-compose logs -f"
 alias dcstop="docker-compose stop"
 alias dclog="docker-compose logs -f"
 alias dcdup="docker-compose stop && docker-compose pull && docker-compose up --remove-orphans -d && docker-compose logs -f"
+alias dcbup="docker-compose build && docker-compose up --remove-orphans"
 alias dpsa='docker ps -a --format "table {{.ID}} {{.Names}}\t{{printf \"%.25s\" .Image}}\t{{.Status}}\t{{.Ports}}"'
 
 #Django stuff
@@ -56,6 +60,9 @@ alias runmssql="docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=cTXu1nJLCpC/c' -p 
 alias tor="docker run -i -t --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro paulczar/torbrowser"
 
 alias g="gr @$CURRENT_REPO git "
+alias gpomd="git push origin master develop"
+alias gpotd="git push origin trunk develop"
+alias git-browse="xdg-open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
 alias sqlw="/opt/SqlWorkbench/sqlworkbench.sh &"
 alias se="/opt/StorageExplorer/StorageExplorer > /dev/null 2>&1 &"
@@ -66,9 +73,9 @@ alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 # alias reloadbashrc="source ~/.bashrc"
 alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999"
-alias upd="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo snap refresh"
+alias upd="paru -Syu && paru"
+alias updfrasier="ssh frasier 'sudo apt-get update && sudo apt-get -y dist-upgrade'"
 alias updarch="yay -Syu"
-alias updniles="ssh niles sudo 'apt-get update && sudo apt-get -y dist-upgrade'"
 alias psql="sudo -u postgres psql deepsouthsounds"
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"
@@ -84,14 +91,13 @@ alias rmq=' sudo rabbitmqctl'
 alias congo='node /srv/dev/working/congo/server.js'
 
 alias zap='/home/fergalm/working/ZAP/zap.sh > /dev/null 2>&1 &'
-alias git-browse="xdg-open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 
 alias andconnect='adb connect 10.1.1.102:5555'
 
 doAgFind() {
     ag --ignore-dir node_modules --ignore-dir bower_components $1
 }
-alias ag=doAgFind
+alias fag=doAgFind
 
 doGrepSearch() {
     find | grep $1

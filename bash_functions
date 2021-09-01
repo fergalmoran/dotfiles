@@ -15,7 +15,7 @@ function dnefm(){
     dotnet ef database update 
 }
 function add_ferglie_ip() {
-    az account set --subscription DSS 
+    az account set --subscription PodNoms 
     az network dns record-set a add-record -g rg-ferglie -z fergl.ie -n $1 -a 109.255.216.213
 }
 function kcda(){

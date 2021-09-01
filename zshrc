@@ -2,7 +2,7 @@ export LANG="en_IE.UTF-8"
 export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin
 export EDITOR='vim'
 export VISUAL='vim'
-source ~/dotfiles/.privatenv
+source ~/.prv/env
 # Python stuff
 export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 # If you come from bash you might have to change your $PATH.
@@ -23,6 +23,9 @@ export OPENFAAS_URL=cluster-master:31112
 export DOTNET_ROOT=$HOME/dotnet
 export DOTNET_HOST_PATH=$DOTNET_ROOT
 export PATH="$DOTNET_ROOT:$PATH:/home/fergalm/.dotnet/tools/"
+
+# Set QT apps to use hdpi scaling
+export QT_USE_PHYSICAL_DPI=1
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -46,6 +49,7 @@ source /home/fergalm/dotfiles/pl9k.config
 # This hangs when trying to type tmux
 # zsh-syntax-highlighting
 plugins=(
+    autoupdate
     git
     github
     docker
@@ -122,7 +126,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 #android stuff
 export ANDROID_HOME=/opt/android/sdk
 export PATH=$PATH:/opt/flutter/bin
-export PATH=$PATH:/opt/android/sdk/platform-tools/
+export PATH=$PATH:/opt/android/sdk/platform-tools/:/opt/android/sdk/cmdline-tools/latest/bin/
 export JAVA_HOME=/opt/android/android-studio/jre/
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
@@ -138,3 +142,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source /usr/share/nvm/init-nvm.sh
+eval "$(mcfly init zsh)"
+
+
+source /home/fergalm/.config/broot/launcher/bash/br

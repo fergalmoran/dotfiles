@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=ReadMe
+Exec=env WINEPREFIX="/home/fergalm/.wine32" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/fergalm/.wine32/dosdevices/c:/users/fergalm/Start\\ Menu/Programs/Propellerhead/ReBirth\\ RB-338/ReadMe.lnk
+Type=Application
+StartupNotify=true
+Icon=CC6D_ReadMe.0

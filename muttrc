@@ -1,0 +1,9 @@
+set imap_pass=$FERGLIEMAILPASS
+set spoolfile="imaps://fergal\@fergl.ie@mail.fergl.ie/"
+# Define the = shortcut, and the entry point for the folder browser (c?)
+set folder="imaps://mail.fergl.ie/"
+set record="=Sent"
+set postponed="=Drafts"
+
+
+bind index G imap-fetch-mail
