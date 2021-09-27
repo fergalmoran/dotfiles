@@ -4,6 +4,7 @@ alias ls="lsd -alh"
 alias locate="plocate"
 alias dmesg="sudo dmesg"
 
+alias ip="ip -c"
 alias mutt="neomutt"
 alias cat="bat"
 alias ytdl="youtube-dl"
@@ -83,6 +84,7 @@ alias dbcreate="docker run -d --restart=always --cpus=".2" --name=dropbox -v /ho
 alias dbignore='find `pwd` -type d -regex ".*\(node_modules\|temp\|tmp\|bower_components\|cache\)$" -prune -exec docker exec -t -i dropbox dropbox exclude add {} \;'
 alias dbrm="find . -name \*\'s\ conflicted\ copy\ \* -exec rm  {} \;"
 alias ping="ping -O"
+alias ping1="ping -O 1.1.1.1"
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'

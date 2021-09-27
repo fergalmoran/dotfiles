@@ -64,10 +64,10 @@ function reset_webstorm() {
     _reset_jb WebStorm
 }
 function _reset_jb(){
-    rm -rf ~/.config/JetBrains/$1*/eval
+    rm -rf ~/.java/.userPrefs/prefs.xml
+    rm -rf ~/.java/.userPrefs/jetbrains/prefs.xml
+    rm -rf ~/.config/JetBrains/$1*/eval/
     rm -rf ~/.config/JetBrains/$1*/options/other.xml
-    sed -i -E 's/<property name=\"evl.*\".*\/>//' ~/.config/JetBrains/$1*/options/other.xml
-    # rm -rf ~/.java/.userPrefs/jetbrains/rider$1/
 }
 
 cb() {
