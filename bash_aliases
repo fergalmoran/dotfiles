@@ -4,6 +4,9 @@ alias ls="lsd -alh"
 alias locate="plocate"
 alias dmesg="sudo dmesg"
 
+alias playunderwater='play -c2 -n synth whitenoise band -n 100 24 band -n 300 100 gain +20'
+alias playocean='play -n -n --combine merge synth pinknoise band -n 1200 1800 tremolo 50 10 tremolo 0.14 70 tremolo 0.2 50 gain  -10'
+
 alias ip="ip -c"
 alias mutt="neomutt"
 alias cat="bat"
