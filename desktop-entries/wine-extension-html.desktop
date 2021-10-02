@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=winebrowser
-MimeType=application/x-extension-htm;
+MimeType=application/x-extension-html;
 Exec=env WINEPREFIX="/home/fergalm/.wine32" wine start /ProgIDOpen htmlfile %f
 NoDisplay=true
 StartupNotify=true

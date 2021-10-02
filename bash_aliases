@@ -32,12 +32,15 @@ alias csharp_editorconfig="cp /home/fergalm/dotfiles/editorconfigs/editorconfig.
 #kubernetes stuff
 alias k="kubectl"
 #.NET stuff
-alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dndel="find . -iname \"bin\" -o -iname \"obj\" | xargs rm -rfv"
+alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
 alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
+
+#.NET project stuff
+alias pnpr="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 alias pnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
+alias anr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./audioboos-api/audioboos-api.csproj run"
 alias mnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./mixyboos-api/mixyboos-api.csproj run"
-alias dnprodrun="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 
 #docker stuff
 alias dcup="docker-compose up --remove-orphans"
