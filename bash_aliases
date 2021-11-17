@@ -39,7 +39,7 @@ alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
 #.NET project stuff
 alias pnpr="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 alias pnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
-alias anr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./audioboos-api/audioboos-api.csproj run"
+alias anr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./audioboos-server/audioboos-server.csproj run"
 alias mnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./mixyboos-api/mixyboos-api.csproj run"
 
 #docker stuff
@@ -83,7 +83,7 @@ alias server="livereload -p 9999"
 alias upd="paru -Syu && paru"
 alias updfrasier="ssh frasier 'sudo apt-get update && sudo apt-get -y dist-upgrade'"
 alias updarch="yay -Syu"
-alias psql="sudo -u postgres psql deepsouthsounds"
+# alias psql="sudo -u postgres psql deepsouthsounds"
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"
 alias dbcreate="docker run -d --restart=always --cpus=".2" --name=dropbox -v /home/fergalm/dev:/dbox/Dropbox/dev -v /home/fergalm/Dropbox:/dbox/Dropbox janeczku/dropbox"

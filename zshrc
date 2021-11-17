@@ -17,12 +17,15 @@ export ZSH=~/.oh-my-zsh
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export HISTFILESIZE=5000000
+export HISTSIZE=5000000
+
 
 export OPENFAAS_URL=cluster-master:31112
 
-export DOTNET_ROOT=$HOME/dotnet
+export DOTNET_ROOT=$HOME/.dotnet
 export DOTNET_HOST_PATH=$DOTNET_ROOT
-export PATH="$DOTNET_ROOT:$PATH:/home/fergalm/.dotnet/tools/"
+export PATH="$PATH:$DOTNET_ROOT/tools"
 
 # Set QT apps to use hdpi scaling
 export QT_USE_PHYSICAL_DPI=1
@@ -126,7 +129,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 #android stuff
 export ANDROID_HOME=/opt/android/sdk
 export PATH=$PATH:/opt/flutter/bin
-export PATH=$PATH:/opt/android/sdk/platform-tools/:/opt/android/sdk/cmdline-tools/latest/bin/
+export PATH=$PATH:/opt/android/sdk/platform-tools/:/opt/android/sdk/cmdline-tools/latest/bin/:/opt/android/sdk/tools/
 export JAVA_HOME=/opt/android/android-studio/jre/
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable

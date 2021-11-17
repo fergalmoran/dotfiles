@@ -33,6 +33,14 @@ curl 'https://radarr.fergl.ie/api/v3/command' \
     --compressed
 ssh frasier 'find /srv/kubes/configs/radarr/Backups/* -type f -mtime +7 -exec rm {} \;'
 
+echo Backup Lidarr
+curl 'https://lidarr.fergl.ie/api/v1/command' \
+    -H "X-Api-Key: $LIDARR_API_KEY" \
+    -H 'content-type: application/json' \
+    --data-raw '{"name":"Backup"}' \
+    --compressed
+ssh frasier 'find /srv/kubes/configs/lidarr/Backups/* -type f -mtime +7 -exec rm {} \;'
+
 echo Backup boot
 sudo tar zcfv /tmp/niles-boot.tar.gz /boot
 scp /tmp/niles-boot.tar.gz frasier:/srv/sharing/backups/niles/system/
