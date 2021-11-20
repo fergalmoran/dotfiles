@@ -8,6 +8,12 @@ export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli
 
+# Postgres:
+# these details are for localhost docker db only so safe enough to keep in github 
+export PGHOST=localhost
+export PGUSER=postgres
+export PGPASSWORD=hackme
+
 # The Fuck!!
 eval $(thefuck --alias)
 
