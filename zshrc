@@ -2,7 +2,15 @@ export LANG="en_IE.UTF-8"
 export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin
 export EDITOR='vim'
 export VISUAL='vim'
-source ~/.prv/env
+
+if test -f ~/.zshrc_local; then
+    echo $ZSH_THEME
+fi
+
+if test -f "~/.prv/env"; then
+    source ~/.prv/env
+fi
+
 # Python stuff
 export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 # If you come from bash you might have to change your $PATH.
@@ -15,7 +23,9 @@ export PGUSER=postgres
 export PGPASSWORD=hackme
 
 # The Fuck!!
-eval $(thefuck --alias)
+if hash thefuck 2>/dev/null; then
+    eval $(thefuck --alias)
+fi
 
 export WINEPREFIX="/home/fergalm/.wine32"
 # Path to your oh-my-zsh installation.
@@ -39,9 +49,10 @@ export QT_USE_PHYSICAL_DPI=1
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="muse"
 #ZSH_THEME="random"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [[ -z "${ZSH_THEME}" ]]; then
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+fi
 
 unsetopt MULTIBYTE
 
@@ -113,9 +124,12 @@ source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_dirhooks
 
-source <(kubectl completion zsh)
-export KUBECONFIG=$HOME/.kube/config
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+if hash kubectl 2>/dev/null; then
+    source <(kubectl completion zsh)
+    export KUBECONFIG=$HOME/.kube/config
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
 
 #rust stuff
 
@@ -142,16 +156,22 @@ export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export PATH=$PATH:$(go env GOPATH)/bin
-export GOPATH=$(go env GOPATH)
-
+if hash go 2>/dev/null; then
+    export PATH=$PATH:$(go env GOPATH)/bin
+    export GOPATH=$(go env GOPATH)
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if hash nvim 2>/dev/null; then
+    source /usr/share/nvm/init-nvm.sh
+fi
+if hash mcfly 2>/dev/null; then
+    eval "$(mcfly init zsh)"
+fi
 
-source /usr/share/nvm/init-nvm.sh
-eval "$(mcfly init zsh)"
 
-
-source /home/fergalm/.config/broot/launcher/bash/br
+if test -f /home/fergalm/.config/broot/launcher/bash/br; then
+    source /home/fergalm/.config/broot/launcher/bash/br
+fi
