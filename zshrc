@@ -1,15 +1,13 @@
 export LANG="en_IE.UTF-8"
 export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin
 export EDITOR='vim'
-export VISUAL='vim'
+export VISUAL=$EDITOR
+export ZSH=~/.oh-my-zsh
+export HISTFILESIZE=5000000
+export HISTSIZE=5000000
 
-if test -f ~/.zshrc_local; then
-    echo $ZSH_THEME
-fi
-
-if test -f "~/.prv/env"; then
-    source ~/.prv/env
-fi
+export ENV=~/.prv/env
+source $ENV
 
 # Python stuff
 export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
@@ -21,21 +19,11 @@ export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.loc
 export PGHOST=localhost
 export PGUSER=postgres
 export PGPASSWORD=hackme
-
+export REACT_EDITOR=/usr/bin/code-insiders
 # The Fuck!!
-if hash thefuck 2>/dev/null; then
-    eval $(thefuck --alias)
-fi
+eval $(thefuck --alias)
 
 export WINEPREFIX="/home/fergalm/.wine32"
-# Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
-
-export VISUAL=vim
-export EDITOR="$VISUAL"
-export HISTFILESIZE=5000000
-export HISTSIZE=5000000
-
 
 export OPENFAAS_URL=cluster-master:31112
 
@@ -49,10 +37,9 @@ export QT_USE_PHYSICAL_DPI=1
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# ZSH_THEME="muse"
 #ZSH_THEME="random"
-if [[ -z "${ZSH_THEME}" ]]; then
-    ZSH_THEME="powerlevel10k/powerlevel10k"
-fi
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 unsetopt MULTIBYTE
 
@@ -84,13 +71,6 @@ export ZSH=/home/fergalm/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 [[ -s /home/fergalm/.autojump/etc/profile.d/autojump.sh ]] && source /home/fergalm/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -124,17 +104,13 @@ source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_dirhooks
 
-
-if hash kubectl 2>/dev/null; then
-    source <(kubectl completion zsh)
-    export KUBECONFIG=$HOME/.kube/config
-    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-fi
+source <(kubectl completion zsh)
+export KUBECONFIG=$HOME/.kube/config
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 #rust stuff
 
 # This speeds up pasting w/ autosuggest
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238
 pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
   zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
@@ -148,30 +124,23 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 #android stuff
 export ANDROID_HOME=/opt/android/sdk
-export PATH=$PATH:/opt/flutter/bin
-export PATH=$PATH:/opt/android/sdk/platform-tools/:/opt/android/sdk/cmdline-tools/latest/bin/:/opt/android/sdk/tools/
-export JAVA_HOME=/opt/android/android-studio/jre/
-
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+path=("${ANDROID_HOME}/emulator:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools" $path)
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if hash go 2>/dev/null; then
-    export PATH=$PATH:$(go env GOPATH)/bin
-    export GOPATH=$(go env GOPATH)
-fi
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-if hash nvim 2>/dev/null; then
-    source /usr/share/nvm/init-nvm.sh
-fi
-if hash mcfly 2>/dev/null; then
-    eval "$(mcfly init zsh)"
-fi
 
+source /usr/share/nvm/init-nvm.sh
+eval "$(mcfly init zsh)"
 
-if test -f /home/fergalm/.config/broot/launcher/bash/br; then
-    source /home/fergalm/.config/broot/launcher/bash/br
-fi
+export FLYCTL_INSTALL="/home/fergalm/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
