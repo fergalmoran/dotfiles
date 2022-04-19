@@ -1,13 +1,16 @@
 export LANG="en_IE.UTF-8"
-export PATH=$PATH:~/.npm-global/bin:/home/fergalm/dotfiles/bin:/home/fergalm/go/bin:/usr/lib/go-1.9/bin
+export PATH=$PATH:$HOME/npm-global/bin:$HOME/dotfiles/bin:$HOME/go/bin:/usr/lib/go-1.9/bin
 export EDITOR='vim'
 export VISUAL=$EDITOR
-export ZSH=~/.oh-my-zsh
+export ZSH=$HOME/oh-my-zsh
 export HISTFILESIZE=5000000
 export HISTSIZE=5000000
 
-export ENV=~/.prv/env
+export ENV=$HOME/.prv/env
 source $ENV
+
+#Rust stuff
+source $HOME/.cargo/env
 
 # Python stuff
 export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
@@ -73,7 +76,7 @@ source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit -u
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH=$HOME/.ssh/rsa_id
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -84,8 +87,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="vi ~/.zshrc"
 # alias ohmyzsh="vi ~/.oh-my-zsh"
 
-if [ -f /home/fergalm/dotfiles/.private.env ]; then
-    source '/home/fergalm/dotfiles/.private.env'
+if [ -f $HOME/dotfiles/.private.env ]; then
+    source $HOME/dotfiles/.private.env
 fi
 _dotnet_zsh_complete()
 {
@@ -100,9 +103,9 @@ compctl -K _dotnet_zsh_complete dotnet
 export CURRENT_REPO=podnoms
 unalias gr
 unalias g
-source ~/.bash_aliases
-source ~/.bash_functions
-source ~/.bash_dirhooks
+source $HOME/.bash_aliases
+source $HOME/.bash_functions
+source $HOME/.bash_dirhooks
 
 source <(kubectl completion zsh)
 export KUBECONFIG=$HOME/.kube/config
@@ -142,5 +145,8 @@ export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/init-nvm.sh
 eval "$(mcfly init zsh)"
 
-export FLYCTL_INSTALL="/home/fergalm/.fly"
+export FLYCTL_INSTALL=$HOME/.fly
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"

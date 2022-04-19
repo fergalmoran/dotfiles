@@ -1,10 +1,11 @@
 [Desktop Entry]
+Name=Android Studio
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/AndroidStudio/ch-0/.icon.svg
+StartupWMClass=jetbrains-studio
+Comment=An IDE for Android app development
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/AndroidStudio/ch-0/211.7628.21.2111.8309675/bin/studio.sh" %u
 Version=1.0
 Type=Application
-Name=Android Studio
-Icon=/opt/android/android-studio/bin/studio.svg
-Exec="/opt/android/android-studio/bin/studio.sh" %f
-Comment=The Drive to Develop
 Categories=Development;IDE;
 Terminal=false
-StartupWMClass=jetbrains-studio
+StartupNotify=true

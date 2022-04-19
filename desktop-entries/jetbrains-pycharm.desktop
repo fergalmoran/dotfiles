@@ -1,11 +1,11 @@
 [Desktop Entry]
+Name=PyCharm Professional
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/.icon.svg
+StartupWMClass=jetbrains-pycharm
+Comment=The full-stack Python IDE
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/221.5080.212/bin/pycharm.sh" %u
 Version=1.0
 Type=Application
-Name=PyCharm Professional Edition
-Icon=/opt/pycharm/bin/pycharm.svg
-Exec="/opt/pycharm/bin/pycharm.sh" %f
-Comment=Python IDE for Professional Developers
 Categories=Development;IDE;
 Terminal=false
-StartupWMClass=jetbrains-pycharm
 StartupNotify=true

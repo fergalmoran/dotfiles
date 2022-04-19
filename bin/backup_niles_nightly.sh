@@ -28,6 +28,8 @@ ssh frasier 'find /srv/kubes/configs/sonarr/Backups/* -type f -mtime +7 -exec rm
 
 echo Backup Radarr
 curl 'https://radarr.fergl.ie/api/v3/command' \
+    -H 'content-type: application/json' \
+    -H 'accept: application/json, text/javascript, */*; q=0.01' \
     -H "X-Api-Key: $RADARR_API_KEY" \
     --data-raw '{"name":"Backup"}' \
     --compressed
@@ -58,6 +60,9 @@ echo Backing up VMs to box
 rclone sync -v --ignore-errors --stats 10s --stats-log-level INFO \
       /opt/VM/ \
       box_large_file:vms
+
+echo Backup up git
+git-backup -backup.path /mnt/frasier/sharing/backups/git/ -config.file /mnt/frasier/sharing/backups/git/git-backup-config.yml
 
 echo Backing up home config to box
 rclone sync -v --ignore-errors --stats 10s --stats-log-level INFO \

@@ -18,5 +18,7 @@ inode/directory=vscode-insiders.desktop;
 text/plain=azure-data-studio.desktop;vscode-insiders.desktop;wine-extension-txt.desktop;
 text/vbscript=wine-extension-vbs.desktop;
 x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop;
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop;
+x-scheme-handler/msteams=teams.desktop;
 x-scheme-handler/vscode-insiders=vscode-insiders-url-handler.desktop;
 x-scheme-handler/vsls=vsls-launcher.desktop;

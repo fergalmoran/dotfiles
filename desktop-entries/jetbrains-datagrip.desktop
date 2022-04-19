@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=DataGrip
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/datagrip/ch-0/.icon.svg
+StartupWMClass=jetbrains-datagrip
+Comment=The IDE for databases and SQL
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/datagrip/ch-0/221.5080.224/bin/datagrip.sh" %u
+Version=1.0
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true

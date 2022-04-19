@@ -39,6 +39,16 @@ dockermachine_check () {
     fi
 }
 
+dockercontext_check () {
+    CONTEXT_DIR=$(search_up .dockercontext)
+    if [ ! -z $CONTEXT_DIR ]; then
+        echo "Activating $CONTEXT_DIR"
+        eval $(docker context use `cat $CONTEXT_DIR`)
+    else
+        eval $(docker context use default)
+    fi
+}
+
 cd_hooks () {
     virtualenv_check
     dockermachine_check

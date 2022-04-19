@@ -13,12 +13,17 @@ alias cat="bat"
 alias ytdl="youtube-dl"
 alias findpis="arp -na | grep -i 'b8:27:eb'"
 
+alias copykey="cat ~/.ssh/id_rsa.pub | pbcopy"
+
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
 
 alias code="/usr/bin/code-insiders"
 alias c="code-insiders"
 alias edclust="code /home/fergalm/dev/clusters/workspace.code-workspace"
+
+alias cargow="cargo watch -q -c -x run"
+
 
 alias yay="paru"
 alias pwgen="openssl rand -base64 32"

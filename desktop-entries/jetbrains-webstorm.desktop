@@ -1,11 +1,11 @@
 [Desktop Entry]
+Name=WebStorm
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/.icon.svg
+StartupWMClass=jetbrains-webstorm
+Comment=A JavaScript IDE
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/221.5080.193/bin/webstorm.sh" %u
 Version=1.0
 Type=Application
-Name=WebStorm
-Icon=/opt/webstorm/bin/webstorm.svg
-Exec="/opt/webstorm/bin/webstorm.sh" %f
-Comment=The smartest JavaScript IDE
 Categories=Development;IDE;
 Terminal=false
-StartupWMClass=jetbrains-webstorm
 StartupNotify=true
