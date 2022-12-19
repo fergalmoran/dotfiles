@@ -7,3 +7,4 @@ set postponed="=Drafts"
 
 
 bind index G imap-fetch-mail
+set timeout=10

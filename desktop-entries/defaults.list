@@ -1,0 +1,12 @@
+[Default Applications]
+application/x-crossover-exe=cxassoc-cxoffice-0:application_x-crossover-exe::install.desktop
+application/x-ms-dos-executable=cxassoc-cxoffice-0:application_x-crossover-exe::install.desktop
+x-content/win32-software=cxassoc-cxoffice-0:application_x-crossover-exe::install.desktop
+application/x-ms-shortcut=cxassoc-cxoffice-0:application_x-crossover-lnk::run.desktop
+application/x-crossover-lnk=cxassoc-cxoffice-0:application_x-crossover-lnk::run.desktop
+application/x-win-lnk=cxassoc-cxoffice-0:application_x-crossover-lnk::run.desktop
+application/x-msi=cxassoc-cxoffice-0:application_x-crossover-msi::install.desktop
+application/x-crossover-msi=cxassoc-cxoffice-0:application_x-crossover-msi::install.desktop
+application/x-crossover-cxarchive=cxassoc-cxoffice-0:application_x-crossover-cxarchive::restore.desktop
+application/x-crossover-c4p=cxassoc-cxoffice-1:application_x-crossover-c4p::install.desktop
+application/x-crossover-tie=cxassoc-cxoffice-1:application_x-crossover-tie::install.desktop

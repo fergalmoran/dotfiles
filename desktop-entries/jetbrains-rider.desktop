@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Rider
+Name=Rider 2022.3
 Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/Rider/ch-0/.icon.svg
 StartupWMClass=jetbrains-rider
 Comment=A cross-platform .NET IDE
-Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/Rider/ch-0/221.5080.236/bin/rider.sh" %u
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/Rider/ch-0/223.7571.232/bin/rider.sh" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;

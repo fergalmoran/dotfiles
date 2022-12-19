@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Network;FileTransfer;
+Encoding=UTF-8
+Exec=crossftp
+GenericName=CrossFTP FM
+Icon=/usr/share/crossftp/logo_big.png
+Name=CrossFTP
+Terminal=0
+Type=Application
+Version=1.0

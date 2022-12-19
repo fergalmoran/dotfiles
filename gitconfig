@@ -17,3 +17,15 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
+[merge]
+        tool = code-insiders
+[mergetool]
+        writeToTemp = true
+            keepBackup = false
+[mergetool "code-insiders"]
+        cmd = code-insiders --wait -m $REMOTE $LOCAL $BASE $MERGED
+[alias]
+	ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi"
+[safe]
+	directory = /opt/flutter

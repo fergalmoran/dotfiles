@@ -1,0 +1,45 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+X-Created-By=cxoffice-0
+Categories=X-cxmenu-cxoffice-0-29ra4ke;
+StartupNotify=true
+StartupWMClass=cxuninstall
+Icon=cxmenu-cxoffice-0-cxuninstall
+Exec=/home/fergalm/cxoffice/bin/cxuninstall %u
+Name=Uninstall CrossOver
+Comment=Uninstall CrossOver
+Name[fr]=Désinstaller CrossOver
+Name[nl]=Deïnstalleer CrossOver
+Name[cs]=Odinstalovat CrossOver
+Name[zh_CN]=卸载 CrossOver
+Name[pl]=Odinstaluj CrossOver
+Name[tr]=CrossOver'ı Kaldır
+Name[zh_TW]=解除安裝 CrossOver
+Name[ja]=CrossOverをアンインストール
+Name[de]=CrossOver de-installieren
+Name[pt]=Desinstalar Crossover
+Name[hu]=CrossOver-alkalmazás eltávolítása
+Name[ru]=Деинсталлировать CrossOver
+Name[sk]=Odinštalovať CrossOver
+Name[pt_BR]=Desinstalar Crossover
+Name[it]=Disinstalla CrossOver
+Name[es]=Desinstalar CrossOver
+Comment[fr]=Désinstaller CrossOver
+Comment[nl]=Deïnstalleer CrossOver
+Comment[cs]=Odinstalovat CrossOver
+Comment[zh_CN]=卸载 CrossOver
+Comment[pl]=Odinstaluj CrossOver
+Comment[tr]=CrossOver'ı Kaldır
+Comment[zh_TW]=解除安裝 CrossOver
+Comment[ja]=CrossOverをアンインストール
+Comment[de]=CrossOver de-installieren
+Comment[pt]=Desinstalar Crossover
+Comment[hu]=CrossOver-alkalmazás eltávolítása
+Comment[ru]=Деинсталлировать CrossOver
+Comment[sk]=Odinštalovať CrossOver
+Comment[pt_BR]=Desinstalar Crossover
+Comment[it]=Disinstalla CrossOver
+Comment[es]=Desinstalar CrossOver

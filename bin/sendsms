@@ -1,5 +1,12 @@
 #!/bin/env bash
 
+#check the arguments
+if [ "$#" -ne 3 ]
+then
+      echo "Usage: sendsms <to_number> <subject> <message>"
+      exit 1
+fi
+
 ## Set some Twilio globals
 account_sid=$TWILIO_SID # Your live account sid from Account -> Account Settings
 auth_token=$TWILIO_TOKEN # Your live auth token from Account -> Account Settings

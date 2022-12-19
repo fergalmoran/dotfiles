@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Second Life
+Comment=Client for the On-line Virtual World, Second Life
+Exec=/home/fergalm/.secondlife-install/etc/../secondlife
+Icon=/home/fergalm/.secondlife-install/etc/../secondlife_icon.png
+Terminal=false
+Type=Application
+Categories=Application;Network;
+StartupNotify=true
+X-Desktop-File-Install-Version=3.0

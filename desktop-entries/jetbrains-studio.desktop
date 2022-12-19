@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Android Studio
+Name=Android Studio Dolphin 2021.3.1 Patch 1
 Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/AndroidStudio/ch-0/.icon.svg
 StartupWMClass=jetbrains-studio
 Comment=An IDE for Android app development
-Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/AndroidStudio/ch-0/211.7628.21.2111.8309675/bin/studio.sh" %u
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/AndroidStudio/ch-0/213.7172.25.2113.9123335/bin/studio.sh" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;

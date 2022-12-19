@@ -1,7 +1,37 @@
+
 #!/usr/bin/env bash
-function ff(){
-    find | grep -i $1
+
+function fmpv() {
+    mpv --ontop --screen=2 $1
 }
+function gi() {
+    curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;
+}
+
+dockerssh() {
+    rm -f /tmp/docker.sock
+    cleanup() {
+        ssh -q -S docker-ctrl-socket -p "${PORT}" -O exit "${HOST}"
+        rm -f /tmp/docker.sock
+    }
+    trap "cleanup" EXIT
+    ssh -M -S docker-ctrl-socket -p "${PORT}" -fnNT -L /tmp/docker.sock:/var/run/docker.sock "${HOST}"
+    DOCKER_HOST=unix:///tmp/docker.sock eval "$*"
+}
+function mkcldb(){
+    if [ "$#" -ne 3 ]; then
+        echo "Useage: mkcldb <database> <user> <password>"
+        return
+    fi
+    echo Dropping db
+    PGPASSWORD=$CLUSTER_MASTER_PGPWD dropdb --host cluster-master $1 --force
+    echo Creating db
+    PGPASSWORD=$CLUSTER_MASTER_PGPWD createdb --host cluster-master $1 
+    echo Adding permissions
+    PGPASSWORD=$CLUSTER_MASTER_PGPWD psql --host cluster-master -c "create user $2 with encrypted password '$3'"
+    PGPASSWORD=$CLUSTER_MASTER_PGPWD psql --host cluster-master -c "grant all privileges on database $1 to $2"
+}
+
 function run_osx() {
     docker run \
         --device /dev/kvm \

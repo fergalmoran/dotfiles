@@ -3,6 +3,8 @@ alias vi="vim"
 alias ls="lsd -alh"
 alias locate="plocate"
 alias dmesg="sudo dmesg"
+alias ncdu="gdu"
+alias freespace="sudo gdu / -I /mnt"
 
 alias playunderwater='play -c2 -n synth whitenoise band -n 100 24 band -n 300 100 gain +20'
 alias playocean='play -n -n --combine merge synth pinknoise band -n 1200 1800 tremolo 50 10 tremolo 0.14 70 tremolo 0.2 50 gain  -10'
@@ -25,7 +27,6 @@ alias edclust="code /home/fergalm/dev/clusters/workspace.code-workspace"
 alias cargow="cargo watch -q -c -x run"
 
 
-alias yay="paru"
 alias pwgen="openssl rand -base64 32"
 alias tmuxj="export DISPLAY=:0 && tmux -d attach"
 alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
@@ -48,13 +49,16 @@ alias anr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project .
 alias mnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./mixyboos-api/mixyboos-api.csproj run"
 
 #docker stuff
-alias dcup="docker-compose up --remove-orphans"
-alias dcupd="docker-compose up --remove-orphans -d && docker-compose logs -f"
-alias dcstop="docker-compose stop"
-alias dclog="docker-compose logs -f"
-alias dcdup="docker-compose stop && docker-compose pull && docker-compose up --remove-orphans -d && docker-compose logs -f"
-alias dcbup="docker-compose build && docker-compose up --remove-orphans"
+alias dctop="docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest"
+alias dcup="docker compose up --remove-orphans"
+alias dcupd="docker compose up --remove-orphans -d && docker compose logs -f"
+alias dcstop="docker compose stop"
+alias dclog="docker compose logs -f"
+alias dcdup="docker compose stop && docker compose pull && docker compose up --remove-orphans -d && docker compose logs -f"
+alias noodles_dcdup="docker --context noodles compose stop && docker --context noodles compose pull && docker --context noodles compose up --remove-orphans -d && docker --context noodles compose logs -f"
+alias dcbup="docker compose build && docker compose up --remove-orphans"
 alias dpsa='docker ps -a --format "table {{.ID}} {{.Names}}\t{{printf \"%.25s\" .Image}}\t{{.Status}}\t{{.Ports}}"'
+alias dockernuke='docker kill $(docker ps -q) && docker system prune -a'
 
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"
@@ -87,7 +91,7 @@ alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999"
 alias upd="paru -Syu && paru"
 alias updfrasier="ssh frasier 'sudo apt-get update && sudo apt-get -y dist-upgrade'"
-alias updarch="yay -Syu"
+alias updarch="paru -Syu"
 # alias psql="sudo -u postgres psql deepsouthsounds"
 
 alias dbstatus="docker exec -t -i dropbox dropbox status"
