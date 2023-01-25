@@ -5,6 +5,7 @@ alias locate="plocate"
 alias dmesg="sudo dmesg"
 alias ncdu="gdu"
 alias freespace="sudo gdu / -I /mnt"
+alias mntds="gocryptfs /mnt/frasier/sharing/.prv/dn /home/fergalm/.prv/dn"
 
 alias playunderwater='play -c2 -n synth whitenoise band -n 100 24 band -n 300 100 gain +20'
 alias playocean='play -n -n --combine merge synth pinknoise band -n 1200 1800 tremolo 50 10 tremolo 0.14 70 tremolo 0.2 50 gain  -10'
@@ -13,6 +14,7 @@ alias ip="ip -c"
 alias mutt="neomutt"
 alias cat="bat"
 alias ytdl="youtube-dl"
+alias yd="yt-dlp"
 alias findpis="arp -na | grep -i 'b8:27:eb'"
 
 alias copykey="cat ~/.ssh/id_rsa.pub | pbcopy"

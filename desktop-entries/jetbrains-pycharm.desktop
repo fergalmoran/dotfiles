@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=PyCharm Professional 2022.3.1 Release Candidate
+Name=PyCharm Professional 2023.1 EAP
 Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/.icon.svg
 StartupWMClass=jetbrains-pycharm
 Comment=The full-stack Python IDE
-Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/223.8214.17/bin/pycharm.sh" %u
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/231.4840.379/bin/pycharm.sh" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;

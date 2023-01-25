@@ -92,7 +92,7 @@ function backup_kubes() {
 
     rsync --rsync-path="sudo rsync" \
         -auvh \
-        cluster-master:/srv/storage/ /mnt/frasier/backups/kubes/
+        cluster-master:/srv/storage/configs /mnt/frasier/backups/kubes/
 }
 function backup_media_hosts() {
     echo Backup Sonarr
@@ -122,6 +122,13 @@ function backup_local() {
     echo Backup up system config and boot files
     sudo rsync -Pav --delete -e "ssh -i $HOME/.ssh/id_rsa" /boot/ fergalm@frasier://srv/backups/niles/system/boot/
     sudo rsync -Pav --delete -e "ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@frasier://srv/backups/niles/system/etc/
+    sudo rsync -Pav --delete -e "ssh -i $HOME/.id_rsa" /etc/ fergalm@frasier://srv/backups/niles/system/etc/
+
+    echo Backup local wallets
+    rsync -e 'ssh -p23' \
+        -auvh \
+        $HOME/.electrum \
+        $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/prv/localwallets/
 
     echo Backup env
     rsync -e 'ssh -p23' \
@@ -178,6 +185,12 @@ function backup_frasier() {
         --delete \
         -auvh \
         /mnt/frasier/backups/ $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/frasier/
+
+    echo Backing up frasier keys to hetzner
+    rsync -e 'ssh -p23' \
+        --delete \
+        -auvh \
+        /mnt/frasier/sharing/ $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/frasier/sharing
 }
 function tbd() {
     echo Backing up Documents to hetzner
@@ -199,6 +212,8 @@ function tbd() {
 
 }
 read_env
+sudo mount /mnt/frasier
+sudo mount /mnt/kubes
 
 backup_dev
 backup_git
