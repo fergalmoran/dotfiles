@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=Android Studio Electric Eel 2022.1.1
-Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/AndroidStudio/ch-0/.icon.svg
-StartupWMClass=jetbrains-studio
-Comment=An IDE for Android app development
-Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/AndroidStudio/ch-0/221.6008.13.2211.9477386/bin/studio.sh" %u
+Name=Android Studio Hedgehog 2023.1.1 Canary 11
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/android-studio/bin/studio.sh" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;
 Terminal=false
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/android-studio/bin/studio.svg
+Comment=An IDE for Android app development
+StartupWMClass=jetbrains-studio
 StartupNotify=true

@@ -1,0 +1,11 @@
+*/.DS_Store
+*/._*
+*/.pnpm-store
+*/.yarn
+*/.krud
+*/.gradle
+*/.angular
+*/node_modules
+*/bin
+*/debug
+*/packages

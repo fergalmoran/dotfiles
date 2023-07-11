@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=DataGrip 2022.3.3
-Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/datagrip/ch-0/.icon.svg
-StartupWMClass=jetbrains-datagrip
-Comment=The IDE for databases and SQL
-Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/datagrip/ch-0/223.8617.3/bin/datagrip.sh" %u
+Name=DataGrip 2023.2 EAP
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/datagrip-2/bin/datagrip.sh" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;
 Terminal=false
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/datagrip-2/bin/datagrip.svg
+Comment=The IDE for databases and SQL
+StartupWMClass=jetbrains-datagrip
 StartupNotify=true

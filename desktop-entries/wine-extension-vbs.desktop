@@ -5,4 +5,4 @@ MimeType=text/vbscript;
 Exec=env WINEPREFIX="/home/fergalm/.wine32" wine start /ProgIDOpen VBSFile %f
 NoDisplay=true
 StartupNotify=true
-Icon=B13E_wscript.0
+Icon=2905_wscript.0

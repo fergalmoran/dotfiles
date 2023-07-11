@@ -47,8 +47,10 @@ alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
 #.NET project stuff
 alias pnpr="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
 alias pnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
+alias pnjr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-jobs/podnoms-jobs.csproj run"
 alias anr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./audioboos-server/audioboos-server.csproj run"
 alias mnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./mixyboos-api/mixyboos-api.csproj run"
+alias gitversion="dotnet-gitversion"
 
 #docker stuff
 alias dctop="docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest"

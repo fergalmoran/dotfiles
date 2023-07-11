@@ -73,6 +73,7 @@ export HISTSIZE=5000000
 export OPENFAAS_URL=cluster-master:31112
 
 export DOTNET_ROOT=$HOME/.dotnet
+export DOTNET_ROOT_64=$DOTNET_ROOT
 export DOTNET_HOST_PATH=$DOTNET_ROOT/dotnet
 export DOTNET_WATCH_RESTART_ON_RUDE_EDIT=1
 export PATH="$DOTNET_ROOT:$PATH:$DOTNET_ROOT/tools"
@@ -161,8 +162,8 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 export ANDROID_HOME=/opt/android/sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH=$PATH:/opt/flutter/bin
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH=$PATH:/opt/android/sdk/platform-tools/:/opt/android/sdk/cmdline-tools/latest/bin/:/opt/android/sdk/tools/
-export JAVA_HOME=/opt/android/android-studio/jre/
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
@@ -203,3 +204,10 @@ source <(ng completion script)
 now=$(($(date +%s%0N)/1000000))
 elapsed=$(($now-$timer))
 echo ".zshrc loaded in ${elapsed}ms"
+
+# pnpm
+export PNPM_HOME="/home/fergalm/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac

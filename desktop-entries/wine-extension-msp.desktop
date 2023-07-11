@@ -5,4 +5,4 @@ MimeType=application/x-wine-extension-msp;
 Exec=env WINEPREFIX="/home/fergalm/.wine32" wine start /ProgIDOpen Msi.Patch %f
 NoDisplay=true
 StartupNotify=true
-Icon=2402_msiexec.0
+Icon=D23E_msiexec.0

@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=Space Desktop 2023.1.0
-Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/Space/ch-0/.icon.svg
-StartupWMClass=jetbrains-ide
-Comment=A complete software development platform
-Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/Space/ch-0/2023.1.0/space" %u
+Name=Space Desktop 2023.1.2
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/space-desktop/space" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;
 Terminal=false
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/dotDesktopIcons/Space Desktop.desktop.icon.svg
+Comment=A complete software development platform
+StartupWMClass=jetbrains-ide

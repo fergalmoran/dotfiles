@@ -5,4 +5,4 @@ MimeType=application/winhlp;
 Exec=env WINEPREFIX="/home/fergalm/.wine32" wine start /ProgIDOpen hlpfile %f
 NoDisplay=true
 StartupNotify=true
-Icon=4137_winhlp32.0
+Icon=C06E_winhlp32.0

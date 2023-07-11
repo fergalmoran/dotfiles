@@ -17,3 +17,4 @@ sudo chown $USER $INSTALL_DIR
 tar zxf $TMP_FILE -C $INSTALL_DIR --strip-components=1
 sudo ln -sfn "${INSTALL_DIR}bin/code-insiders" /usr/bin/code-insiders
 sudo xdg-mime default vscode-insiders-url-handler.desktop x-scheme-handler/vscode-insiders
+rm $TMP_FILE

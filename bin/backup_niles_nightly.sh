@@ -25,46 +25,69 @@ function backup_noodles() {
     rsync --rsync-path="sudo rsync" \
         --delete \
         -auvh \
-        noodles.fergl.ie:/opt /mnt/frasier/backups/noodles
+        noodles.fergl.ie:/opt /mnt/storage/backups/noodles
 }
 function backup_dev() {
-    echo Backing up dev to frasier
+    echo Backing up dev to storage
     rsync \
         --delete \
         --force \
         --delete-excluded \
         -auvh \
         --exclude=node_modules \
+        --exclude=.next \
+        --exclude=.yarn \
+        --exclude=.pnpm-store \
         --exclude=bin \
         --exclude=obj \
         --exclude=packages \
-        --exclude=.env \
         --exclude=.gradle \
-        --exclude=.next \
         --exclude=.angular \
         --exclude=build \
         /srv/dev/ \
-        fergalm@frasier:/srv/dev
+        storage.fergl.ie://srv/storage/backups/dev
 
     echo Backing up dev to hetzner
     rsync -e 'ssh -p23' \
         --delete \
+        --delete-excluded \
         -auvh \
         --exclude=node_modules \
+        --exclude=.next \
+        --exclude=.krud \
+        --exclude=.yarn \
+        --exclude=.pnpm-store \
         --exclude=bin \
         --exclude=obj \
         --exclude=packages \
         --exclude=.gradle \
-        --exclude=.next \
         --exclude=.angular \
         --exclude=build \
         /srv/dev $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/
+    
+    echo Backing up dev to box
+    rclone sync --progress \
+        --delete-excluded \
+        --skip-links \
+        --ignore-case-sync \
+        --exclude=node_modules/ \
+        --exclude=.next/ \
+        --exclude=.krud/ \
+        --exclude=.yarn/ \
+        --exclude=.pnpm-store/ \
+        --exclude=bin/ \
+        --exclude=obj/ \
+        --exclude=packages/ \
+        --exclude=.gradle/ \
+        --exclude=.angular/ \
+        --exclude=build/ \
+        /srv/dev box-media:/dev
 }
 function backup_git() {
     echo Mirroring github repos
     python /srv/dev/working/github-gitea-mirror/mirror.py
     echo Backup up git
-    git-backup -backup.path /mnt/frasier/backups/git/ -config.file /mnt/frasier/backups/git/git-backup-config.yml
+    git-backup -backup.path /mnt/storage/backups/git/ -config.file /mnt/storage/backups/git/git-backup-config.yml
 }
 
 function backup_mail() {
@@ -82,17 +105,25 @@ function backup_mail() {
 
 function backup_audio() {
     echo Backing up audio to hetzner
+           
     rsync -e 'ssh -p23' \
         --delete \
         -auvh \
-        /mnt/frasier/audio $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/
+        /mnt/storage/audio $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/
+    
+    echo Backing up audio to box
+    rclone sync --progress \
+        --delete-excluded \
+        --skip-links \
+        --ignore-case-sync \
+        /mnt/storage/audio/ box-media:/audio
 }
 function backup_kubes() {
     # Need to have $USER ssh keys in /root/.ssh/ for this to work :(
 
     rsync --rsync-path="sudo rsync" \
         -auvh \
-        cluster-master:/srv/storage/configs /mnt/frasier/backups/kubes/
+        cluster-master:/srv/storage/configs /mnt/storage/backups/cluster-configs/
 }
 function backup_media_hosts() {
     echo Backup Sonarr
@@ -119,10 +150,17 @@ function backup_media_hosts() {
 }
 function backup_local() {
 
-    echo Backup up system config and boot files
-    sudo rsync -Pav --delete -e "ssh -i $HOME/.ssh/id_rsa" /boot/ fergalm@frasier://srv/backups/niles/system/boot/
-    sudo rsync -Pav --delete -e "ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@frasier://srv/backups/niles/system/etc/
-    sudo rsync -Pav --delete -e "ssh -i $HOME/.id_rsa" /etc/ fergalm@frasier://srv/backups/niles/system/etc/
+    echo Backup up system config and boot filesz
+    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /boot/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/boot/
+    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/etc/
+    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/etc/
+
+
+    echo Backup dotfiles and scripts
+    rsync -e 'ssh -p23' \
+        -auvh \
+        $HOME/dotfiles \
+        $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/dotfiles
 
     echo Backup local wallets
     rsync -e 'ssh -p23' \
@@ -175,23 +213,7 @@ function backup_local() {
         --exclude='skypeforlinux/' \
         $HOME/.config $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/nileshome
 }
-function backup_router() {
-    echo Backing up router
-    rsync root@10.1.1.254:/etc /mnt/frasier/backups/router
-}
-function backup_frasier() {
-    echo Backing up backups to hetzner
-    rsync -e 'ssh -p23' \
-        --delete \
-        -auvh \
-        /mnt/frasier/backups/ $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/frasier/
 
-    echo Backing up frasier keys to hetzner
-    rsync -e 'ssh -p23' \
-        --delete \
-        -auvh \
-        /mnt/frasier/sharing/ $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/frasier/sharing
-}
 function tbd() {
     echo Backing up Documents to hetzner
     rsync -e 'ssh -p23' \
@@ -214,6 +236,7 @@ function tbd() {
 read_env
 sudo mount /mnt/frasier
 sudo mount /mnt/kubes
+sed -i /';yt-dlp/d' ~/.zsh_history
 
 backup_dev
 backup_git

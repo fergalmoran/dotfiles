@@ -1,11 +1,11 @@
 [Desktop Entry]
-Name=DataSpell 2022.3.2 Release Candidate
-Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/DataSpell/ch-0/.icon.svg
-StartupWMClass=jetbrains-dataspell
-Comment=An IDE for data scientists
-Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/DataSpell/ch-0/223.8617.27/bin/dataspell.sh" %u
+Name=DataSpell 2023.2 EAP
+Exec="/home/fergalm/.local/share/JetBrains/Toolbox/apps/dataspell/bin/dataspell.sh" %u
 Version=1.0
 Type=Application
 Categories=Development;IDE;
 Terminal=false
+Icon=/home/fergalm/.local/share/JetBrains/Toolbox/apps/dataspell/bin/dataspell.svg
+Comment=An IDE for data scientists
+StartupWMClass=jetbrains-dataspell
 StartupNotify=true
