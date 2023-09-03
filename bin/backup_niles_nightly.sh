@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 ENV=$HOME/.prv/env
-RCACCOUNT=ferglieback
-BOX=ferglieback
+RCLONE_CONFIG=/home/fergalm/.config/rclone/rclone.conf
 
 function read_env() {
     if test -f "$ENV"; then
@@ -45,26 +44,8 @@ function backup_dev() {
         --exclude=.angular \
         --exclude=build \
         /srv/dev/ \
-        storage.fergl.ie://srv/storage/backups/dev
+        storage.l.fergl.ie://srv/storage/backups/dev
 
-    echo Backing up dev to hetzner
-    rsync -e 'ssh -p23' \
-        --delete \
-        --delete-excluded \
-        -auvh \
-        --exclude=node_modules \
-        --exclude=.next \
-        --exclude=.krud \
-        --exclude=.yarn \
-        --exclude=.pnpm-store \
-        --exclude=bin \
-        --exclude=obj \
-        --exclude=packages \
-        --exclude=.gradle \
-        --exclude=.angular \
-        --exclude=build \
-        /srv/dev $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/
-    
     echo Backing up dev to box
     rclone sync --progress \
         --delete-excluded \
@@ -81,7 +62,7 @@ function backup_dev() {
         --exclude=.gradle/ \
         --exclude=.angular/ \
         --exclude=build/ \
-        /srv/dev box-media:/dev
+        /srv/dev box:/dev
 }
 function backup_git() {
     echo Mirroring github repos
@@ -100,23 +81,24 @@ function backup_mail() {
     rsync --rsync-path="sudo rsync" \
         --delete \
         -auvh \
-        mail.fergl.ie:/opt/backups/ /mnt/frasier/backups/mail/
+        mail.fergl.ie:/opt/backups/ /mnt/storage/backups/mail/
 }
 
 function backup_audio() {
-    echo Backing up audio to hetzner
-           
-    rsync -e 'ssh -p23' \
-        --delete \
-        -auvh \
-        /mnt/storage/audio $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/
-    
-    echo Backing up audio to box
-    rclone sync --progress \
+
+   echo Backing up audio to box
+   rclone sync --progress \
         --delete-excluded \
         --skip-links \
         --ignore-case-sync \
-        /mnt/storage/audio/ box-media:/audio
+        /mnt/storage/audio/ /mnt/storage/backups/audio
+
+   echo Backing up audio to box
+   rclone sync --progress \
+        --delete-excluded \
+        --skip-links \
+        --ignore-case-sync \
+        /mnt/storage/audio/ box-audio:
 }
 function backup_kubes() {
     # Need to have $USER ssh keys in /root/.ssh/ for this to work :(
@@ -155,7 +137,6 @@ function backup_local() {
     sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/etc/
     sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/etc/
 
-
     echo Backup dotfiles and scripts
     rsync -e 'ssh -p23' \
         -auvh \
@@ -171,7 +152,10 @@ function backup_local() {
     echo Backup env
     rsync -e 'ssh -p23' \
         --delete \
-        -auvh \
+        -auvh \    rclone sync --progress \
+        --delete-excluded \
+        --skip-links \
+        --ignore-case-sync \
         $ENV \
         $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/prv
 
@@ -199,6 +183,8 @@ function backup_local() {
         -auvh \
         --exclude='azuredatastudio/' \
         --exclude='Code' \
+        --exclude='JetBrains' \
+        --exclude='opera' \
         --exclude='Code - Insiders' \
         --exclude='Signal/' \
         --exclude='Slack/' \
@@ -222,26 +208,43 @@ function tbd() {
         $HOME/Documents/ \
         $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/documents/
 
-    echo Backing up VMs to box
-    rclone sync -v --ignore-errors --stats 10s --stats-log-level INFO \
-        /opt/VM/ \
-        box_large_file:vms
-
+    echo Backing up Documents to box
+    rclone sync --progress \
+        --delete-excluded \
+        --skip-links \
+        $HOME/Documents/ \
+        box-backups:Documents
+        
     echo Backing up Downloads to box
     rclone sync -v --stats 10s --stats-log-level INFO \
         $HOME/Downloads \
-        box_large_file:backups/downloads
+        box-backups:Downloads
+
+    echo Backing up on site backups to box
+    sudo mkdir -p /root/.config/rclone/
+    sudo cp $RCLONE_CONFIG /root/.config/rclone/
+    sudo rclone sync -v --stats 10s --stats-log-level INFO \
+        --delete-excluded \
+        --skip-links \
+        /mnt/storage/backups \
+        box-backups:onprem
+
+    # echo Backing up VMs to box
+    # sudo rclone sync -v --ignore-errors --stats 10s --stats-log-level INFO \
+    #     /opt/VM/ \
+    #     box-backups:vms
 
 }
 read_env
-sudo mount /mnt/frasier
+sudo mount /mnt/storage
 sudo mount /mnt/kubes
 sed -i /';yt-dlp/d' ~/.zsh_history
-
 backup_dev
 backup_git
-backup_mail
 backup_audio
+tbd
+exit
+backup_mail
 backup_kubes
 backup_noodles
 backup_media_hosts

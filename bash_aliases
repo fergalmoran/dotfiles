@@ -1,64 +1,22 @@
-# ignore
-alias vi="vim"
-alias ls="lsd -alh"
-alias locate="plocate"
-alias dmesg="sudo dmesg"
-alias ncdu="gdu"
-alias freespace="sudo gdu / -I /mnt"
-alias mntds="gocryptfs /mnt/frasier/sharing/.prv/dn /home/fergalm/.prv/dn"
-
-alias playunderwater='play -c2 -n synth whitenoise band -n 100 24 band -n 300 100 gain +20'
-alias playocean='play -n -n --combine merge synth pinknoise band -n 1200 1800 tremolo 50 10 tremolo 0.14 70 tremolo 0.2 50 gain  -10'
-
-alias ip="ip -c"
-alias mutt="neomutt"
-alias cat="bat"
-alias ytdl="youtube-dl"
-alias yd="yt-dlp"
-alias findpis="arp -na | grep -i 'b8:27:eb'"
-
-alias copykey="cat ~/.ssh/id_rsa.pub | pbcopy"
-
-alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias itunes="wine /home/fergalm/.wine32/drive_c/Program\ Files/iTunes/iTunes.exe"
-
-alias code="/usr/bin/code-insiders"
-alias c="code-insiders"
-alias edclust="code /home/fergalm/dev/clusters/workspace.code-workspace"
-
-alias cargow="cargo watch -q -c -x run"
-
-
-alias pwgen="openssl rand -base64 32"
-alias tmuxj="export DISPLAY=:0 && tmux -d attach"
-alias robo3t="/home/fergalm/bin/robo3t-1.2.1-linux-x86_64-3e50a65/bin/robo3t > /dev/null 2>&1 &"
-#javascript stuff
-alias nodenuke="rm -rf package-lock.json node_modules && npm i"
-#editorconfigs
-alias js_editorconfig="cp /home/fergalm/dotfiles/editorconfigs/editorconfig.javascript .editorconfig"
-alias csharp_editorconfig="cp /home/fergalm/dotfiles/editorconfigs/editorconfig.csharp .editorconfig"
-#kubernetes stuff
-alias k="kubectl"
-#.NET stuff
+alias dnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./$DOTNET_PROJ/$DOTNET_PROJ.csproj run"
 alias dndel="find . -iname \"bin\" -o -iname \"obj\" | xargs rm -rfv"
-alias dndev="export ASPNETCORE_ENVIRONMENT=Development"
-alias dnprod="export ASPNETCORE_ENVIRONMENT=Production"
-
-#.NET project stuff
-alias pnpr="export ASPNETCORE_ENVIRONMENT=Production && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
-alias pnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-api/podnoms-api.csproj run"
-alias pnjr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./podnoms-jobs/podnoms-jobs.csproj run"
-alias anr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./audioboos-server/audioboos-server.csproj run"
-alias mnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./mixyboos-api/mixyboos-api.csproj run"
 alias gitversion="dotnet-gitversion"
+alias ls="lsd -al "
+alias vi="vim"
+alias vim="lvim"
+alias pwgen='openssl rand -base64 32 | while read passwd; do echo $passwd | pbcopy; done'
+alias whatismyip="dig +short txt ch whoami.cloudflare @1.0.0.1 | sed 's/\"//g'"
 
+alias pnpx='pnpm dlx'
+
+alias code="code-insiders"
 #docker stuff
 alias dctop="docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest"
 alias dcup="docker compose up --remove-orphans"
 alias dcupd="docker compose up --remove-orphans -d && docker compose logs -f"
 alias dcstop="docker compose stop"
 alias dclog="docker compose logs -f"
-alias dcdup="docker compose stop && docker compose pull && docker compose up --remove-orphans -d && docker compose logs -f"
+alias dcdup="docker compose stop && docker compose pull && docker compose build && docker compose up --remove-orphans -d && docker compose logs -f"
 alias noodles_dcdup="docker --context noodles compose stop && docker --context noodles compose pull && docker --context noodles compose up --remove-orphans -d && docker --context noodles compose logs -f"
 alias dcbup="docker compose build && docker compose up --remove-orphans"
 alias dpsa='docker ps -a --format "table {{.ID}} {{.Names}}\t{{printf \"%.25s\" .Image}}\t{{.Status}}\t{{.Ports}}"'
@@ -105,7 +63,8 @@ alias dbrm="find . -name \*\'s\ conflicted\ copy\ \* -exec rm  {} \;"
 alias ping="ping -O"
 alias ping1="ping -O 1.1.1.1"
 
-alias pbcopy='xclip -selection clipboard'
+alias xclip='xargs echo -n | xclip -selection clipboard'
+alias pbcopy='xargs echo -n | xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias iotop='sudo iotop'
 alias rmq=' sudo rabbitmqctl'
@@ -131,5 +90,4 @@ doPsKill() {
 alias pskill=doPsKill
 
 alias tmux="TERM=screen-256color-bce tmux attach || TERM=screen-256color-bce tmux"
-alias dnr="ASPNETCORE_ENVIRONMENT=development dotnet watch run"
 alias ngs="ng serve"

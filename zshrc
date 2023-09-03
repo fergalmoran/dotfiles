@@ -86,7 +86,7 @@ source /home/fergalm/dotfiles/pl9k.config
 
 export ZSH=/home/fergalm/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-[[ -s /home/fergalm/.autojump/etc/profile.d/autojump.sh ]] && source /home/fergalm/.autojump/etc/profile.d/autojump.sh
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -195,12 +195,6 @@ if test -f /home/fergalm/.config/broot/launcher/bash/br; then
     source /home/fergalm/.config/broot/launcher/bash/br
 fi
 
-# Scaleway CLI autocomplete initialization.
-eval "$(scw autocomplete script shell=zsh)"
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
 now=$(($(date +%s%0N)/1000000))
 elapsed=$(($now-$timer))
 echo ".zshrc loaded in ${elapsed}ms"
@@ -211,3 +205,18 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+# pnpm end
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+#
+
+# bun completions
+[ -s "/home/fergalm/.bun/_bun" ] && source "/home/fergalm/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

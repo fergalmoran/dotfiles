@@ -29,6 +29,15 @@ virtualenv_check () {
     fi
 }
 
+dotnet_check () {
+    DOTNET_DIR=$(search_up .dotnetenv)
+    if [ ! -z $DOTNET_DIR ]; then
+        source $DOTNET_DIR
+        alias dnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./$DOTNET_PROJ/$DOTNET_PROJ.csproj run"
+        echo "Active dotnet project is $DOTNET_PROJ"
+    fi
+}
+
 dockermachine_check () {
     MACHINE_DIR=$(search_up .machineenv)
     if [ ! -z $MACHINE_DIR ]; then
@@ -52,6 +61,7 @@ dockercontext_check () {
 cd_hooks () {
     virtualenv_check
     dockermachine_check
+    dotnet_check
 }
 
 cd () {

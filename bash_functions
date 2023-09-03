@@ -1,5 +1,38 @@
 
 #!/usr/bin/env bash
+#
+
+function win11() {
+  virsh domstate win11 | grep running
+  if [ $? -ne 0 ] ; then
+    echo "Starting VM"
+    virsh start win11
+  else
+    echo "Connecting to VM"
+  fi 
+
+  virt-viewer -f \
+    --hotkeys=toggle-fullscreen=ctrl+f11,release-cursor=ctrl+alt \
+    win11 &
+}
+function visrc() {
+  vi $1 && source $1
+}
+
+function chownf() {
+  sudo chown fergalm:wheel $1 
+}
+
+function mssql_scripter() {
+  docker run \
+    --rm \
+    --interactive \
+    --tty \
+    --volume "$(pwd):/work" \
+    "backplane/mssql-scripter" \
+    "$@"
+
+}
 
 function fmpv() {
     mpv --ontop --screen=2 $1
