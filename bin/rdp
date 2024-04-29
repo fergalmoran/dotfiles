@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+rdesktop /u:username /p:password /v:10.1.1.1 \
+    +clipboard /network:auto /rfx /gfx:rfx \
+    /f /floatbar:sticky:off \
+    +fonts /bpp:32 /audio-mode:0 +aero +window-drag \
+    /scale:180 /scale-desktop:200 \
+    /tune:FreeRDP_HiDefRemoteApp:true,FreeRDP_GfxAVC444v2:true,FreeRDP_GfxH264:true

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=ReBirth RB-338 2.0
-Exec=env WINEPREFIX="/home/fergalm/.wine32" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/fergalm/.wine32/dosdevices/c:/users/fergalm/Start\\ Menu/Programs/Propellerhead/ReBirth\\ RB-338/ReBirth\\ RB-338\\ 2.0.lnk
-Type=Application
-StartupNotify=true
-Path=/home/fergalm/.wine32/dosdevices/c:/Program Files (x86)/Propellerhead/ReBirth RB-338 2.0/Demo Songs
-Icon=2B6A_ReBirth.0
-StartupWMClass=rebirth.exe

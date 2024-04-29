@@ -1,0 +1,2 @@
+opt/jellyfin/config/metadata
+opt/jellyfin/config/transcodes

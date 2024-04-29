@@ -1,8 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Categories=AudioVideo;Audio;Video;Player;TV
-Comment=Chrome extension and python server that allows you to play videos in webpages with MPV instead.
-Exec=/play_with_mpv-0.1.0.post9+g07a9c1d.data/scripts/play-with-mpv
-Icon=mpv
-Name=Play With MPV (server)
-Type=Application

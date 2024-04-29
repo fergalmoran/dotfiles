@@ -1,0 +1,18 @@
+Authy Desktop/
+BraveSoftware/
+azuredatastudio/
+Code
+JetBrains
+opera
+Code - Insiders
+Signal/
+Slack/
+discord/
+yarn/
+Postman/
+Microsoft/
+microsoft-edge*/
+chromium/
+google-chrome/
+google-chrome-beta/
+skypeforlinux/

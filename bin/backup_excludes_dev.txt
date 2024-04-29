@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.env/
+.venv/
+.yarn/
+.pnpm-store/
+bin/
+obj/
+dist/
+packages/
+.gradle/
+.angular/
+build/
+working/

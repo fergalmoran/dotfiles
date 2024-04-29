@@ -12,18 +12,11 @@ function read_env() {
     fi
 }
 function backup_noodles() {
-    echo Backing up rocket chat
-    docker --context noodles \
-        run -it --rm \
-        --net traefik_proxy \
-        --link rocket-chat-mongodb-1 \
-        -v /opt/ferglie-chat/backups:/backups \
-        bitnami/mongodb:4.4 mongodump -h rocket-chat-mongodb-1 -o /backups/
-
     echo Rsyncing containers
     rsync --rsync-path="sudo rsync" \
         --delete \
         -auvh \
+        --exclude-from=$HOME/dotfiles/bin/backup_excludes_noodles.txt \
         noodles.fergl.ie:/opt /mnt/storage/backups/noodles
 }
 function backup_dev() {
@@ -33,90 +26,57 @@ function backup_dev() {
         --force \
         --delete-excluded \
         -auvh \
-        --exclude=node_modules \
-        --exclude=.next \
-        --exclude=.yarn \
-        --exclude=.pnpm-store \
-        --exclude=bin \
-        --exclude=obj \
-        --exclude=packages \
-        --exclude=.gradle \
-        --exclude=.angular \
-        --exclude=build \
+        --exclude-from=$HOME/dotfiles/bin/backup_excludes_dev.txt \
         /srv/dev/ \
-        storage.l.fergl.ie://srv/storage/backups/dev
+        martin.l.fergl.ie://srv/storage/backups/dev
 
     echo Backing up dev to box
     rclone sync --progress \
         --delete-excluded \
         --skip-links \
         --ignore-case-sync \
-        --exclude=node_modules/ \
-        --exclude=.next/ \
-        --exclude=.krud/ \
-        --exclude=.yarn/ \
-        --exclude=.pnpm-store/ \
-        --exclude=bin/ \
-        --exclude=obj/ \
-        --exclude=packages/ \
-        --exclude=.gradle/ \
-        --exclude=.angular/ \
-        --exclude=build/ \
+        --exclude-from=$HOME/dotfiles/bin/backup_excludes_dev.txt \
         /srv/dev box:/dev
 }
 function backup_git() {
+    return
     echo Mirroring github repos
-    python /srv/dev/working/github-gitea-mirror/mirror.py
-    echo Backup up git
-    git-backup -backup.path /mnt/storage/backups/git/ -config.file /mnt/storage/backups/git/git-backup-config.yml
-}
-
-function backup_mail() {
-    echo Cleaning up mail server
-    ssh mail.fergl.ie "find /opt/backups/* -type f -mtime +7 -exec sudo rm {} \;"
-
-    echo Backing up mail server
-    ssh mail.fergl.ie sudo tar -zcvf "/opt/backups/mailcow-$(date '+%Y-%m-%d').tgz" /opt/mailcow/
-
-    rsync --rsync-path="sudo rsync" \
-        --delete \
-        -auvh \
-        mail.fergl.ie:/opt/backups/ /mnt/storage/backups/mail/
+    # python /srv/dev/working/github-gitea-mirror/mirror.py
+    # echo Backup up git
+    # docker run -v /mnt/storage/backups/github:/backups ghcr.io/chappio/git-backup
 }
 
 function backup_audio() {
 
-   echo Backing up audio to box
-   rclone sync --progress \
+    echo Backing up audio to storage
+    rclone sync --progress \
         --delete-excluded \
         --skip-links \
         --ignore-case-sync \
         /mnt/storage/audio/ /mnt/storage/backups/audio
 
-   echo Backing up audio to box
-   rclone sync --progress \
+    echo Backing up audio to box
+    rclone sync --progress \
         --delete-excluded \
         --skip-links \
         --ignore-case-sync \
         /mnt/storage/audio/ box-audio:
 }
 function backup_kubes() {
-    # Need to have $USER ssh keys in /root/.ssh/ for this to work :(
-
-    rsync --rsync-path="sudo rsync" \
-        -auvh \
-        cluster-master:/srv/storage/configs /mnt/storage/backups/cluster-configs/
+    echo Backing up Technitium
+    wget -O /mnt/storage/backups/$(date -d "today" +"%Y%m%d%H%M")_technitium.tar.gz \
+        http://10.1.1.253:5380/api/settings/backup\?token\=$TECHNITIUM_TOKEN\&blockLists\=true\&logs\=true\&scopes\=true\&stats\=true\&zones\=true\&allowedZones\=true\&blockedZones\=true\&dnsSettings\=true\&logSettings\=true\&authConfig\=true
 }
 function backup_media_hosts() {
     echo Backup Sonarr
-    curl 'https://sonarr.fergl.ie/api/v3/command' \
+    curl 'https://sonarr.ferg.al/api/v3/command' \
         -H 'content-type: application/json' \
         -H 'accept: application/json, text/javascript, */*; q=0.01' \
         -H "x-api-key: $SONARR_API_KEY" \
         --data-raw '{"name":"Backup"}' \
         --compressed
     echo Backup Radarr
-    curl 'https://radarr.fergl.ie/api/v3/command' \
+    curl 'https://radarr.ferg.al/api/v3/command' \
         -H 'content-type: application/json' \
         -H 'accept: application/json, text/javascript, */*; q=0.01' \
         -H "X-Api-Key: $RADARR_API_KEY" \
@@ -124,7 +84,7 @@ function backup_media_hosts() {
         --compressed
 
     echo Backup Lidarr
-    curl 'https://lidarr.fergl.ie/api/v1/command' \
+    curl 'https://lidarr.ferg.al/api/v1/command' \
         -H "X-Api-Key: $LIDARR_API_KEY" \
         -H 'content-type: application/json' \
         --data-raw '{"name":"Backup"}' \
@@ -132,124 +92,81 @@ function backup_media_hosts() {
 }
 function backup_local() {
 
-    echo Backup up system config and boot filesz
-    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /boot/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/boot/
-    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/etc/
-    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" /etc/ fergalm@storage.fergl.ie://srv/storage/backups/niles/system/etc/
+    echo Backup up system config and boot files
+    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" \  /boot/ /mnt/storage/backups/niles/system/boot
+    sudo rsync -Pav --delete -e "sudo -u fergalm ssh -i $HOME/.ssh/id_rsa" \
+        /etc/ /mnt/storage/backups/niles/system/etc
+    #Not the prettiest but it makes it so much easier to rsync this way
+    sudo chown fergalm:fergalm /mnt/storage/backups/niles/system -R
 
-    echo Backup dotfiles and scripts
-    rsync -e 'ssh -p23' \
-        -auvh \
-        $HOME/dotfiles \
-        $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/dotfiles
-
-    echo Backup local wallets
-    rsync -e 'ssh -p23' \
-        -auvh \
-        $HOME/.electrum \
-        $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/prv/localwallets/
-
-    echo Backup env
+    echo Backing up ssh key
     rsync -e 'ssh -p23' \
         --delete \
-        -auvh \    rclone sync --progress \
+        -auvh \
+        $HOME/.ssh /mnt/storage/backups/niles/ssh/
+
+    echo Backing up home config
+    rsync -e 'ssh -p23' \
+        --delete \
         --delete-excluded \
-        --skip-links \
-        --ignore-case-sync \
-        $ENV \
-        $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/prv
+        -auvh \
+        --exclude-from=$HOME/dotfiles/bin/backup_excludes_config.txt \
+        $HOME/.config /mnt/storage/backups/niles/home/
 
-    echo Backup desktop icons
+    echo Backing up home documents
     rsync -e 'ssh -p23' \
         --delete \
+        --delete-excluded \
         -auvh \
-        $HOME/.local/share/applications/ \
-        $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/nileshome/desktop-shortcuts/
+        $HOME/Documents /mnt/storage/backups/niles/Documents/
 
     rsync -e 'ssh -p23' \
         --delete \
+        --delete-excluded \
         -auvh \
-        $HOME/.prv $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/
-
-    echo Backing up ssh keys to hetzner
-    rsync -e 'ssh -p23' \
-        --delete \
-        -auvh \
-        $HOME/.ssh $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/ssh
-
-    echo Backing up home config to hetzner
-    rsync -e 'ssh -p23' \
-        --delete \
-        -auvh \
-        --exclude='azuredatastudio/' \
-        --exclude='Code' \
-        --exclude='JetBrains' \
-        --exclude='opera' \
-        --exclude='Code - Insiders' \
-        --exclude='Signal/' \
-        --exclude='Slack/' \
-        --exclude='discord/' \
-        --exclude='yarn/' \
-        --exclude='Postman/' \
-        --exclude='Microsoft/' \
-        --exclude='microsoft-edge-dev/' \
-        --exclude='chromium/' \
-        --exclude='google-chrome/' \
-        --exclude='google-chrome-beta/' \
-        --exclude='skypeforlinux/' \
-        $HOME/.config $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/nileshome
+        $HOME/Downloads /mnt/storage/backups/niles/Downloads/
 }
 
-function tbd() {
-    echo Backing up Documents to hetzner
-    rsync -e 'ssh -p23' \
-        --delete \
-        -auvh \
-        $HOME/Documents/ \
-        $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups/documents/
-
-    echo Backing up Documents to box
-    rclone sync --progress \
-        --delete-excluded \
-        --skip-links \
-        $HOME/Documents/ \
-        box-backups:Documents
-        
-    echo Backing up Downloads to box
-    rclone sync -v --stats 10s --stats-log-level INFO \
-        $HOME/Downloads \
-        box-backups:Downloads
+function backup_onsite() {
 
     echo Backing up on site backups to box
-    sudo mkdir -p /root/.config/rclone/
-    sudo cp $RCLONE_CONFIG /root/.config/rclone/
-    sudo rclone sync -v --stats 10s --stats-log-level INFO \
+    sudo rclone sync \
         --delete-excluded \
+        --exclude=.krud/ \
+        --exclude=audio/ \
+        --exclude=dev/ \
+        --exclude=vms/ \
+        --config $RCLONE_CONFIG \
+        -v --stats 10s --stats-log-level INFO \
         --skip-links \
         /mnt/storage/backups \
         box-backups:onprem
+    sudo chown fergalm /home/fergalm/.config/rclone/rclone.conf
 
-    # echo Backing up VMs to box
-    # sudo rclone sync -v --ignore-errors --stats 10s --stats-log-level INFO \
-    #     /opt/VM/ \
-    #     box-backups:vms
-
+    echo Backing up on-site to Hetzner
+    rsync --stats -avi -e 'ssh -p23' --recursive \
+        /mnt/storage/backups/ $HETZNER_USER@$HETZNER_USER.your-storagebox.de:backups
 }
 read_env
+echo "Mounting required filesystems"
 sudo mount /mnt/storage
 sudo mount /mnt/kubes
+echo "Filesystems mounted - let's go..."
 sed -i /';yt-dlp/d' ~/.zsh_history
+sed -i /';gocryptfs/d' ~/.zsh_history
+
+sudo chown fergalm /home/fergalm/.config/rclone/rclone.conf
+
+backup_noodles
+
 backup_dev
-backup_git
-backup_audio
-tbd
-exit
-backup_mail
+backup_local
+
+backup_pg.sh
+
 backup_kubes
 backup_noodles
+backup_git
+backup_audio
 backup_media_hosts
-backup_frasier
-backup_router
-backup_local
-tbd
-exit 0
+backup_onsite

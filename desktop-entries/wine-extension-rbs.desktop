@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=ReBirth RB-338
-MimeType=application/x-wine-extension-rbs;
-Exec=env WINEPREFIX="/home/fergalm/.wine32" wine start /ProgIDOpen ReBirth.Document %f
-NoDisplay=true
-StartupNotify=true
-Icon=EAF3_Rebirth.0

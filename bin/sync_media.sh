@@ -2,6 +2,7 @@ is_mounted() {
 	mount | awk -v DIR="$1" '{if ($3 == DIR) { exit 0}} ENDFILE{exit -1}'
 }
 source $HOME/.prv/env
+sudo chown fergalm /home/fergalm/.config/rclone/rclone.conf
 
 if ! is_mounted "/mnt/storage"; then
 	sudo mount /mnt/storage

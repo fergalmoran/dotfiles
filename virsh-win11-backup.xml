@@ -1,0 +1,7 @@
+<domainbackup>
+  <disks>
+    <disk name='sda' type='file'>
+      <target file='/mnt/storage/backups/vms/libvirt/win11/win11.disk'/>
+    </disk>
+  </disks>
+</domainbackup>

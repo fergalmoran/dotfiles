@@ -1,27 +1,25 @@
+alias ssh="TERM=xterm ssh" #fix kitty setting term in SSH sessions and borking keystrokes
+alias dmesg="sudo dmesg"
 alias dnr="export ASPNETCORE_ENVIRONMENT=Development && dotnet watch --project ./$DOTNET_PROJ/$DOTNET_PROJ.csproj run"
 alias dndel="find . -iname \"bin\" -o -iname \"obj\" | xargs rm -rfv"
 alias gitversion="dotnet-gitversion"
 alias ls="lsd -al "
 alias vi="vim"
-alias vim="lvim"
+alias vim="nvim"
 alias pwgen='openssl rand -base64 32 | while read passwd; do echo $passwd | pbcopy; done'
 alias whatismyip="dig +short txt ch whoami.cloudflare @1.0.0.1 | sed 's/\"//g'"
-
+alias wanip="whatismyip"
+alias nordcon="nordvpn whitelist add subnet 10.1.1.1/24 && nordvpn set technology openvpn && nordvpn connect uk1604"
 alias pnpx='pnpm dlx'
+alias x='xdg-open'
+alias foxy='firefox -CreateProfile "foxy /tmp/foxy" && firefox -P foxy'
+alias chromey='google-chrome-stable --user-data-dir=/tmp/chromy'
 
 alias code="code-insiders"
 #docker stuff
-alias dctop="docker run --rm -ti --name=ctop --volume /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest"
-alias dcup="docker compose up --remove-orphans"
-alias dcupd="docker compose up --remove-orphans -d && docker compose logs -f"
-alias dcstop="docker compose stop"
-alias dclog="docker compose logs -f"
-alias dcdup="docker compose stop && docker compose pull && docker compose build && docker compose up --remove-orphans -d && docker compose logs -f"
-alias noodles_dcdup="docker --context noodles compose stop && docker --context noodles compose pull && docker --context noodles compose up --remove-orphans -d && docker --context noodles compose logs -f"
-alias dcbup="docker compose build && docker compose up --remove-orphans"
 alias dpsa='docker ps -a --format "table {{.ID}} {{.Names}}\t{{printf \"%.25s\" .Image}}\t{{.Status}}\t{{.Ports}}"'
 alias dockernuke='docker kill $(docker ps -q) && docker system prune -a'
-
+alias dockervolnuke='docker volume ls -qf dangling=true | xargs -r docker volume rm'
 #Django stuff
 alias djrun="source /home/fergalm/dev/personal/deepsouthsounds.com/dss.docker/api_env && python manage.py runserver 0.0.0.0:8001"
 alias djshell="python manage.py shell_plus --use-pythonrc --ipython"
@@ -51,7 +49,7 @@ alias rsl="rslsync --config /home/fergalm/.config/resilio-sync/config.json"
 # alias reloadbashrc="source ~/.bashrc"
 alias rlz="source ~/.zshrc"
 alias server="livereload -p 9999"
-alias upd="paru -Syu && paru"
+alias upd="paru -Syu --noconfirm"
 alias updfrasier="ssh frasier 'sudo apt-get update && sudo apt-get -y dist-upgrade'"
 alias updarch="paru -Syu"
 # alias psql="sudo -u postgres psql deepsouthsounds"

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+if [ "$#" -gt 1 ]; then
+  echo "Wrap your commit message in quotes ya dope"
+  exit 1
+fi
+
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+COMMIT_MESSAGE=$1
+
+if [[ $CURRENT_BRANCH != "develop" ]]; then
+  echo "Run this again from the develop branch"
+  exit 2
+fi
+
+echo Commit message is $1
+if [ -z "$(git status --porcelain)" ]; then 
+  echo "We're clean in here"
+else 
+  echo "Uncommited changes, let's try to commit"
+  git add .
+  git commit -am "{$1}"
+fi
+
+npm version patch
+
+if [ $? -eq 0 ]; then
+  echo "Let's go...."
+  git checkout trunk
+  git merge develop
+  git push origin trunk develop
+  git checkout develop
+fi
+
+echo Done....

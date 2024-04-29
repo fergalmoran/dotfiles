@@ -38,16 +38,6 @@ dotnet_check () {
     fi
 }
 
-dockermachine_check () {
-    MACHINE_DIR=$(search_up .machineenv)
-    if [ ! -z $MACHINE_DIR ]; then
-        echo "Activating $MACHINE_ENV"
-        eval $(docker-machine env `cat $MACHINE_DIR`)
-    else
-        eval $(docker-machine env --unset)
-    fi
-}
-
 dockercontext_check () {
     CONTEXT_DIR=$(search_up .dockercontext)
     if [ ! -z $CONTEXT_DIR ]; then
@@ -60,7 +50,6 @@ dockercontext_check () {
 
 cd_hooks () {
     virtualenv_check
-    dockermachine_check
     dotnet_check
 }
 

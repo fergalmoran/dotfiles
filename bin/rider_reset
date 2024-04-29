@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cd ~/.Rider2019.1/
-rm config/eval/*evaluation.key
-rm config/options/options.xml
-cd ~/.java/.userPrefs/jetbrains
-rm -rf rider/
