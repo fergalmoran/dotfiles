@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-DOMAIN=${1:-win11} 
-BACKUP_CONFIG=/home/fergalm/dotfiles/virsh-win11-backup.xml
+DOMAIN=${1:-windows} 
+BACKUP_CONFIG=/home/fergalm/dotfiles/virsh-windows-backup.xml
 BACKUP_PATH=/mnt/storage/backups/vms/libvirt/$DOMAIN
 XML_BACKUP=$BACKUP_PATH/$DOMAIN.xml
 BACKUP_IMAGE=$BACKUP_PATH/$DOMAIN.disk
@@ -9,8 +9,8 @@ OLD_BACKUP_IMAGE=$BACKUP_PATH/$DOMAIN.disk.$(date "+%Y.%m.%d-%H.%M.%S")
 
 function backup_to_box (){
   sudo rclone sync \
-    /mnt/storage/backups/vms/libvirt/win11/ \
-    box-backups:/vms/win11/
+    /mnt/storage/backups/vms/libvirt/windows/ \
+    box-backups:/vms/windows/
 }
 echo BACKUP_IMAGE $BACKUP_IMAGE
 echo OLD_BACKUP_IMAGE $OLD_BACKUP_IMAGE

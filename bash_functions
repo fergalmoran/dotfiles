@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 #
+function pwgen() {
+  PASSWORD=`/usr/bin/pwgen -cnyB1 -r \'\"\! 15`
+  echo $PASSWORD
+}
+alias pwgenc="pwgen | pbcopy"
+function nuke_venv() {
+
+  if [ "$#" -eq 0 ]
+  then
+    echo Please specify virtualenv to nuke
+    return
+  fi
+
+  deactivate 
+  rm -rfv $HOME/.virtualenvs/$1
+  mkvirtualenv $1
+  pip install -r requirements.txt
+}
+
 function wind () {
   if [ "$#" -eq 0 ]
   then
@@ -32,7 +51,7 @@ function nn() {
       .next bun.lockb yarn.lock package-lock.json \
       pnpm-lock.yaml node_modules && yarn install
   else
-    rm -rfv \
+    rm -rf \
       .next bun.lockb yarn.lock package-lock.json \
       pnpm-lock.yaml node_modules && bun install
   fi
@@ -164,7 +183,8 @@ function mssql_scripter() {
 }
 
 function fmpv() {
-    mpv --ontop --screen=2 $1
+    mpv --ontop --screen=2 $1 \
+      > /dev/null 2>&1 &;
 }
 function gi() {
     curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/\$@ ;

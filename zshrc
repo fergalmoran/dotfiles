@@ -60,7 +60,7 @@ fi
 # Python stuff
 export VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli
+export PATH=$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:/home/fergalm/.local/bin/:/opt/etcher-cli:/home/fergalm/.cargo/bin
 
 # Postgres:
 # these details are for localhost docker db only so safe enough to keep in github

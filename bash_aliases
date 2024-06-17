@@ -6,7 +6,6 @@ alias gitversion="dotnet-gitversion"
 alias ls="lsd -al "
 alias vi="vim"
 alias vim="nvim"
-alias pwgen='openssl rand -base64 32 | while read passwd; do echo $passwd | pbcopy; done'
 alias whatismyip="dig +short txt ch whoami.cloudflare @1.0.0.1 | sed 's/\"//g'"
 alias wanip="whatismyip"
 alias nordcon="nordvpn whitelist add subnet 10.1.1.1/24 && nordvpn set technology openvpn && nordvpn connect uk1604"

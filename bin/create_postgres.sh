@@ -2,7 +2,7 @@
 source $HOME/.prv/env
 docker run -d \
     --name postgres \
-    --restart always \
+    --restart unless-stopped \
     -e POSTGRES_PASSWORD=$PGPASSWORD \
     -p 5432:5432 \
     -e PGDATA=/var/lib/postgresql/data/pgdata \

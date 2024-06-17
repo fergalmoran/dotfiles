@@ -6,7 +6,7 @@ docker rm mssql
 
 docker run \
     --name mssql \
-    --restart always \
+    --restart unless-stopped \
     -e "ACCEPT_EULA=Y" \
     -e "SA_PASSWORD=$MSSQLPASSWORD" \
     -v /home/fergalm/working/backups:/backups \

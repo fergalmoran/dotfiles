@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker --context noodles exec -it shlink shlink short-url:create $1
